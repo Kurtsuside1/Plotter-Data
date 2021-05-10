@@ -1,0 +1,52 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:local="clr-namespace:WpfApp2"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Name="plotterContr" x:Class="WpfApp2.UserControl1"
+             mc:Ignorable="d" 
+             d:DesignHeight="44.262" d:DesignWidth="800" Background="White">
+    <Grid x:Name="plotterControl">
+        <Grid HorizontalAlignment="Left">
+            <Ellipse x:Name="ellStatus" Grid.Column="0" HorizontalAlignment="Left" Height="24" Stroke="Black" VerticalAlignment="Center" Width="24" Fill="Red"/>
+            <Label Grid.Column="1" x:Name="lblMerk" Content="Merk" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label Grid.Column="2" x:Name="lblNaam" Content="Plotter naam" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label Grid.Column="3" x:Name="lblMeterstand" Content="Meterstand" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40px"/>
+                <ColumnDefinition Width="100px"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Grid Grid.Column="1" HorizontalAlignment="Right">
+            <Button Grid.Column="4" x:Name="btnExpand" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="btnExpand_Click">
+                <iconPacks:PackIconFontAwesome Kind="AngleDoubleDownSolid" />
+            </Button>
+            <Button Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click">
+                <iconPacks:PackIconForkAwesome Kind="Cog" />
+            </Button>
+            <Button x:Name="btnScan" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click_1">
+                <iconPacks:PackIconFontAwesome Kind="BinocularsSolid" />
+            </Button>
+            <!--<MediaElement Resources="giphy.gif"></MediaElement>-->
+            <Label x:Name="lblSerialNumber" Content="S/N" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label x:Name="lblTime" Content="Time" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+    </Grid>
+</UserControl>

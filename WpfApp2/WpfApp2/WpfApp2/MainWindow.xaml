@@ -1,0 +1,68 @@
+﻿<mah:MetroWindow x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+
+        Height="431" Width="972"
+                 MinWidth="900" MinHeight="200" FontFamily="Roboto" FontWeight="Normal">
+
+    <ScrollViewer>
+        <Grid x:Name="mainGrid">
+        <Grid VerticalAlignment="Top">
+
+            <Grid HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal"  Width="60px" Height="60px">
+                        <Image Source="Pictures/goedhartgowhite.png"></Image>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  Width="60px" Height="60px">
+                        <Button x:Name="btnAdd" Background="{x:Null}" BorderBrush="{x:Null}" Click="btnAdd_Click">
+                            <iconPacks:PackIconModern 
+                                      Width="40px"
+                                      Height="40px"
+                                      Kind="Add" />
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <Grid HorizontalAlignment="Right">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal"  Width="60px" Height="60px">
+                            <Button x:Name="btnSendMail" Background="{x:Null}" BorderBrush="{x:Null}" Click="btnSendMail_Click">
+                                <iconPacks:PackIconModern 
+                                      Width="40px"
+                                      Height="40px"
+                                      Kind="Email" />
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"  Width="60px" Height="60px">
+                            <Button Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click">
+                                <iconPacks:PackIconModern 
+                                      Width="40px"
+                                      Height="40px"
+                                      Kind="Settings" />
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid x:Name="fillerGrid" Grid.Row="1">
+
+            <Grid.RowDefinitions>
+
+            </Grid.RowDefinitions>
+        </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+    </Grid>
+    </ScrollViewer>
+</mah:MetroWindow>

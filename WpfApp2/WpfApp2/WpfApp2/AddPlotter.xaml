@@ -1,0 +1,63 @@
+﻿<Window x:Class="WpfApp2.AddPlotter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="AddPlotter" MinHeight="390" MaxHeight="390" Height="390" Width="800">
+    <Grid>
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+            <Grid HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal"  Width="300px" Height="60px">
+                        <Image Source="Pictures/logo.png"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" Grid.RowSpan="10" Stroke="Black"/>
+            <Label x:Name="lblPlotSettings" Content="Plotter Settings" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10"/>
+            <Label x:Name="lblPlotNaam" HorizontalContentAlignment ="Right" Content="Plotter naam:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="24" Grid.Column="0" Grid.Row="1"/>
+            <Label x:Name="lblPlotIP" HorizontalContentAlignment ="Right" Content="Plotter IP:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="24" Grid.Column="0" Grid.Row="2" />
+            <Label x:Name="lblPlotType" HorizontalContentAlignment ="Right"  Content="Plotter Type:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="24" Grid.Column="0" Grid.Row="3"/>
+            <TextBox x:Name="tbxPlotNaam" TextWrapping="Wrap" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Margin="2"/>
+            <TextBox x:Name="tbxPlotIP" TextWrapping="Wrap" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Margin="2"/>
+            <Button Grid.Row="5" x:Name="btnCancel" Content="Annuleer" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Height="50" Width="100" Click="btnCancel_Click" Background="{x:Null}" BorderBrush="Black"/>
+            <Button Grid.Row="5" Grid.ColumnSpan="2" Grid.Column="4" x:Name="btnNext" Content="Verder" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Height="50" Width="100" Click="btnNext_Click" Background="{x:Null}" BorderBrush="Black"/>
+            <ComboBox x:Name="cbxPlotterType" Grid.Row="3"  Grid.ColumnSpan="4" Grid.Column="1" Margin="2"/>
+            <Button Grid.Row="5" Grid.Column="1" x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Height="50" Width="100" Background="{x:Null}" BorderBrush="Red" Foreground="Red" Click="btnDelete_Click"/>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="170"></ColumnDefinition>
+                <ColumnDefinition Width="110"></ColumnDefinition>
+                <ColumnDefinition Width="110"></ColumnDefinition>
+                <ColumnDefinition Width="110"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60px"></RowDefinition>
+                <RowDefinition Height="40px"></RowDefinition>
+                <RowDefinition Height="40px"></RowDefinition>
+                <RowDefinition Height="40px"></RowDefinition>
+                <RowDefinition Height="10px"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+        </Grid>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="532,102,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120"/>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40px"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="40px"/>
+        </Grid.ColumnDefinitions>
+    </Grid>
+</Window>

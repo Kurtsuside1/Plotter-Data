@@ -1,0 +1,99 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\RproBr\\Desktop\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\RproBr\\Desktop\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\RproBr\\Desktop\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
+        "projectName": "PlotterDataGH",
+        "projectPath": "C:\\Users\\RproBr\\Desktop\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
+        "packagesPath": "C:\\Users\\RproBr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\RproBr\\Desktop\\WpfApp2\\WpfApp2\\WpfApp2\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\RproBr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "MahApps.Metro": {
+              "target": "Package",
+              "version": "[2.4.4, )"
+            },
+            "MahApps.Metro.IconPacks": {
+              "target": "Package",
+              "version": "[4.8.0, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[2.11.1, )"
+            },
+            "Microsoft.Data.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.23, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            },
+            "System.Linq": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

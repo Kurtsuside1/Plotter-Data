@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>C:\Users\RproBr\Desktop\WpfApp2\WpfApp2\WpfApp2\Properties\PublishProfiles\ClickOnceProfile5.pubxml</_LastSelectedProfileId>
+    <ShowAllFiles>true</ShowAllFiles>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="AddPlotter.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="cartridgeControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="InitSetup.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="plotterControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SettingsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="AddPlotter.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="cartridgeControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="InitSetup.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="plotterControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SettingsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
