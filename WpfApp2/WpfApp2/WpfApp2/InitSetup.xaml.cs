@@ -18,6 +18,7 @@ using PlotterDataGH.Properties;
 using PlotterDataGH;
 using Microsoft.Data.Sqlite;
 using System.Data;
+using System.Security.Cryptography;
 
 namespace WpfApp2
 {
@@ -106,6 +107,23 @@ namespace WpfApp2
             {
                 if (tbxBedrijfsnaam.Text != "" && tbxContactpersoon.Text != "" && tbxEmail.Text != "" && tbxTelefoonnummer.Text != "")
                 {
+                    using (Aes myAes = Aes.Create())
+                    {
+
+                        // Encrypt the string to an array of bytes.
+                        byte[] encrypted = PublicMethods.EncryptStringToBytes_Aes(tbxContactpersoon.Text, myAes.Key, myAes.IV);
+
+                        // Decrypt the bytes to a string.
+                        string roundtrip = PublicMethods.DecryptStringFromBytes_Aes(encrypted, myAes.Key, myAes.IV);
+
+                        //Display the original data and the decrypted data.
+                        Console.WriteLine("Original:   {0}", tbxContactpersoon.Text);
+                        Console.WriteLine("Round Trip: {0}", roundtrip);
+                    }
+
+
+
+
                     Settings.Default.sendData = false;
                     if (cbxSendData.IsChecked == true)
                     {
