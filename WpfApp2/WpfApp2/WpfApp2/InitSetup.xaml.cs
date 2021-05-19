@@ -18,7 +18,10 @@ using PlotterDataGH.Properties;
 using PlotterDataGH;
 using Microsoft.Data.Sqlite;
 using System.Data;
-using System.Security.Cryptography;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Microsoft.Win32.TaskScheduler;
+using System.Reflection;
 
 namespace WpfApp2
 {
@@ -29,6 +32,7 @@ namespace WpfApp2
     {
         bool editMode = false;
         bool sendData = true;
+        private static readonly HttpClient client = new HttpClient();
         public InitSetup()
         {
             InitializeComponent();
@@ -41,7 +45,7 @@ namespace WpfApp2
                 cnn = new SqliteConnection("Data Source=plotterData.db;");
                 cnn.Open();
 
-                string query = "select contactpersoon from users";
+                string query = "select bedrijfs_Naam from users";
                 cmd = new SqliteCommand(query, cnn);
 
                 SqliteDataReader reader = cmd.ExecuteReader();
@@ -50,8 +54,10 @@ namespace WpfApp2
                 if (dataTable.Rows.Count == 1)
                 {
                     MainWindow mw = new MainWindow();
+                    Settings.Default.bedrijfsNaam = dataTable.Rows[0]["bedrijfs_Naam"].ToString();
+                    Settings.Default.Save();
                     mw.Show();
-                    MessageBox.Show("Hallo " + dataTable.Rows[0]["contactpersoon"]);
+                    MessageBox.Show("Hallo " + dataTable.Rows[0]["bedrijfs_Naam"]);
                     this.Close();
                 }
 
@@ -105,44 +111,30 @@ namespace WpfApp2
         {
             if(editMode == false)
             {
-                if (tbxBedrijfsnaam.Text != "" && tbxContactpersoon.Text != "" && tbxEmail.Text != "" && tbxTelefoonnummer.Text != "")
+                if (tbxBedrijfsnaam.Text != "" && tbxContactpersoon.Text != "" && IsValidEmail(tbxEmail.Text) != false && tbxTelefoonnummer.Text != "")
                 {
-                    using (Aes myAes = Aes.Create())
-                    {
-
-                        // Encrypt the string to an array of bytes.
-                        byte[] encrypted = PublicMethods.EncryptStringToBytes_Aes(tbxContactpersoon.Text, myAes.Key, myAes.IV);
-
-                        // Decrypt the bytes to a string.
-                        string roundtrip = PublicMethods.DecryptStringFromBytes_Aes(encrypted, myAes.Key, myAes.IV);
-
-                        //Display the original data and the decrypted data.
-                        Console.WriteLine("Original:   {0}", tbxContactpersoon.Text);
-                        Console.WriteLine("Round Trip: {0}", roundtrip);
-                    }
-
-
-
 
                     Settings.Default.sendData = false;
                     if (cbxSendData.IsChecked == true)
                     {
-                        MySqlConnection cnn = mysql.openConnection();
+                        //MySqlConnection cnn = mysql.openConnection();
 
-                        string queryO = string.Format("INSERT INTO users (bedrijfs_Naam, contactpersoon, email, telefoonnummer) VALUES('{0}', '{1}', '{2}', '{3}')", tbxBedrijfsnaam.Text, tbxContactpersoon.Text, tbxEmail.Text, tbxTelefoonnummer.Text);
-                        //create command and assign the query and connection from the constructor
-                        MySqlCommand cmd = new MySqlCommand(queryO, cnn);
+                        //string queryO = string.Format("INSERT INTO users (bedrijfs_Naam, contactpersoon, email, telefoonnummer) VALUES('{0}', '{1}', '{2}', '{3}')", tbxBedrijfsnaam.Text, tbxContactpersoon.Text, tbxEmail.Text, tbxTelefoonnummer.Text);
+                        ////create command and assign the query and connection from the constructor
+                        //MySqlCommand cmd = new MySqlCommand(queryO, cnn);
 
-                        //Execute command
-                        cmd.ExecuteNonQuery();
-                        long userID = cmd.LastInsertedId;
+                        ////Execute command
+                        //cmd.ExecuteNonQuery();
+                        //long userID = cmd.LastInsertedId;
 
-                        Settings.Default.ID = Convert.ToInt32(userID);
-                        Settings.Default.Save();
+                        //Settings.Default.ID = Convert.ToInt32(userID);
+                        //Settings.Default.Save();
 
-                        Settings.Default.sendData = true;
+                        //Settings.Default.sendData = true;
 
-                        cnn.Close();
+                        //cnn.Close();
+
+                        Await();
                     }
 
                     SqliteConnection cnn1;
@@ -158,8 +150,24 @@ namespace WpfApp2
 
                     cnn1.Close();
 
+                    Settings.Default.bedrijfsNaam = tbxBedrijfsnaam.Text;
 
                     Settings.Default.Save();
+
+                    //using (TaskService ts = new TaskService())
+                    //{
+                    //    // Create a new task definition and assign properties
+                    //    TaskDefinition td = ts.NewTask();
+                    //    td.RegistrationInfo.Description = "Scans plotter";
+                    //    // Register the task in the root folder
+                    //    ts.RootFolder.RegisterTaskDefinition(@"Plotter Scanner", td);
+
+                    //    //// Remove the task we just created
+                    //    //ts.RootFolder.DeleteTask("Test");
+
+                    //    this.Close();
+                    //}
+
 
                     MainWindow mw = new MainWindow();
                     mw.Show();
@@ -172,47 +180,89 @@ namespace WpfApp2
             }
             else
             {
-                Settings.Default.sendData = false;
-                if (cbxSendData.IsChecked == true)
+                if(IsValidEmail(tbxEmail.Text))
                 {
+                    Settings.Default.sendData = false;
+                    if (cbxSendData.IsChecked == true)
+                    {
+                        Await();
+                        
+                    }
 
-                    MySqlConnection cnn = mysql.openConnection();
-                    string queryO = string.Format("INSERT INTO users (bedrijfs_Naam, contactpersoon, email, telefoonnummer) VALUES('{0}', '{1}', '{2}', '{3}')", tbxBedrijfsnaam.Text, tbxContactpersoon.Text, tbxEmail.Text, tbxTelefoonnummer.Text);
+                    SqliteConnection cnn1;
+                    cnn1 = new SqliteConnection("Data Source=plotterData.db;");
+                    cnn1.Open();
+
+                    string query = string.Format("UPDATE users SET bedrijfs_Naam = '{0}', contactpersoon = '{1}', email = '{2}', telefoonnummer = '{3}' WHERE id = 1 ", tbxBedrijfsnaam.Text, tbxContactpersoon.Text, tbxEmail.Text, tbxTelefoonnummer.Text);
                     //create command and assign the query and connection from the constructor
-                    MySqlCommand cmd = new MySqlCommand(queryO, cnn);
+                    SqliteCommand cmd1 = new SqliteCommand(query, cnn1);
 
                     //Execute command
-                    cmd.ExecuteNonQuery();
-                    long userID = cmd.LastInsertedId;
+                    cmd1.ExecuteNonQuery();
 
-                    Settings.Default.ID = Convert.ToInt32(userID);
+                    cnn1.Close();
+
+                    Settings.Default.bedrijfsNaam = tbxBedrijfsnaam.Text;
+
                     Settings.Default.Save();
 
-                    Settings.Default.sendData = true;
-
-                    cnn.Close();
+                    MainWindow mw = new MainWindow();
+                    mw.Show();
+                    this.Close();
                 }
-
-                SqliteConnection cnn1;
-                cnn1 = new SqliteConnection("Data Source=plotterData.db;");
-                cnn1.Open();
-
-                string query = string.Format("UPDATE users SET bedrijfs_Naam = '{0}', contactpersoon = '{1}', email = '{2}', telefoonnummer = '{3}' WHERE id = 1 ", tbxBedrijfsnaam.Text, tbxContactpersoon.Text, tbxEmail.Text, tbxTelefoonnummer.Text);
-                //create command and assign the query and connection from the constructor
-                SqliteCommand cmd1 = new SqliteCommand(query, cnn1);
-
-                //Execute command
-                cmd1.ExecuteNonQuery();
-
-                cnn1.Close();
-
-                Settings.Default.Save();
-
-                MainWindow mw = new MainWindow();
-                mw.Show();
-                this.Close();
+                else
+                {
+                    MessageBox.Show("False Email");
+                }
             }
             
+        }
+
+        async System.Threading.Tasks.Task Await()
+        {
+            int timeout = 1000;
+            var task = SendUserAsync(tbxBedrijfsnaam.Text, tbxContactpersoon.Text, tbxEmail.Text, tbxTelefoonnummer.Text);
+            if (await System.Threading.Tasks.Task.WhenAny(task, System.Threading.Tasks.Task.Delay(timeout)) == task)
+            {
+                // task completed within timeout
+            }
+            else
+            {
+                MessageBox.Show("Verbinding met de Goedhart Servers kon niet gemaakt worden");
+            }
+        }
+
+        async System.Threading.Tasks.Task SendUserAsync(string bedrijfsnaam, string contactpersoon, string email, string telefoonnummer)
+        {
+            var values = new Dictionary<string, string>
+            {
+                { "postType", "Users" },
+                { "bedrijfs_Naam", bedrijfsnaam },
+                { "contactpersoon", contactpersoon },
+                { "email", email },
+                { "telefoonnummer", telefoonnummer }
+            };
+
+            var content = new FormUrlEncodedContent(values);
+
+            var response = await client.PostAsync("http://10.0.0.125/", content);
+
+            var responseString = await response.Content.ReadAsStringAsync();
+
+            MessageBox.Show(responseString);
+        }
+
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private void cbxSendData_Checked(object sender, RoutedEventArgs e)
@@ -223,7 +273,15 @@ namespace WpfApp2
             }
             else
             {
-                sendData = true;
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Goedhart Groep zal alleen de opgegeven profieldata en de data van de printers verkijgen", "Fabrieksinstellingen", System.Windows.MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.Yes)
+                {
+                    sendData = true;
+                }
+                else
+                {
+                    cbxSendData.IsChecked = false;
+                }
             }
         }
     }

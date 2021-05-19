@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Gitzooi\\Plotter-Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj": {}
+    "C:\\Users\\RproBr\\Desktop\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj": {}
   },
   "projects": {
-    "E:\\Gitzooi\\Plotter-Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj": {
+    "C:\\Users\\RproBr\\Desktop\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Gitzooi\\Plotter-Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
+        "projectUniqueName": "C:\\Users\\RproBr\\Desktop\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
         "projectName": "PlotterDataGH",
-        "projectPath": "E:\\Gitzooi\\Plotter-Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
-        "packagesPath": "C:\\Users\\kurtp\\.nuget\\packages\\",
-        "outputPath": "E:\\Gitzooi\\Plotter-Data\\WpfApp2\\WpfApp2\\WpfApp2\\obj\\",
+        "projectPath": "C:\\Users\\RproBr\\Desktop\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
+        "packagesPath": "C:\\Users\\RproBr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\RproBr\\Desktop\\WpfApp2\\WpfApp2\\WpfApp2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\kurtp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\RproBr\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -71,6 +71,10 @@
             "System.Linq": {
               "target": "Package",
               "version": "[4.3.0, )"
+            },
+            "TaskScheduler": {
+              "target": "Package",
+              "version": "[2.9.1, )"
             }
           },
           "imports": [
@@ -91,7 +95,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

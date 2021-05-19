@@ -13,6 +13,7 @@ using System.IO;
 using Microsoft.Data.Sqlite;
 using SendFileTo;
 using System.Reflection;
+using Microsoft.Win32.TaskScheduler;
 
 namespace WpfApp2
 {
@@ -65,6 +66,7 @@ namespace WpfApp2
                 userControl1.lblMerk.Uid = string.Format(row["model_id"].ToString());
                 userControl1.plotterIp = string.Format(row["ip"].ToString());
                 userControl1.lblSerialNumber.Content = "S/N: " + string.Format(row["serial_number"].ToString());
+                userControl1.serialnm = string.Format(row["serial_number"].ToString());
 
                 var dt = DateTime.Parse((string)row["datetime"]);
 
@@ -224,7 +226,64 @@ namespace WpfApp2
             doStuff(filename, arguments);
         }
 
-        async Task doStuff(string fileName, string args)
+        public void TaskCreater()
+        {
+            // Get the service on the local machine
+            using (TaskService ts = new TaskService())
+            {
+                if (ts.GetTask("Plotter Scanner") != null)
+                {
+                    ts.RootFolder.DeleteTask("Plotter Scanner");
+                }
+            }
+
+            foreach (UserControl1 row in fillerGrid.Children)
+            {
+                // Get the service on the local machine
+                using (TaskService ts = new TaskService())
+                {
+
+                    var debugField = System.IO.Path.GetDirectoryName(
+    Assembly.GetExecutingAssembly().GetName().CodeBase);
+
+                    debugField = debugField.Substring(6);
+
+                    var filename = debugField + @"/Selenium.exe";
+
+                    //Start the Converted python file and pass the paramater
+                    string arguments = string.Format(@"{0} {1} {2} {3}", row.lblMerk.Uid.ToString(), row.plotterIp, Settings.Default.sendData, row.lblNaam.Content);
+
+                    TaskDefinition td = ts.NewTask();
+
+                    if (ts.GetTask("Plotter Scanner") != null)
+                    {
+                        td = ts.GetTask("Plotter Scanner").Definition;
+                    }
+
+                    // Create a new task definition and assign properties
+
+                    td.RegistrationInfo.Description = "Scans plotter";
+                    td.RegistrationInfo.Author = "Goedhart Groep";
+
+                    if (td.Triggers.Count == 0)
+                    {
+                        // Create a trigger that will fire the task at this time every day
+                        td.Triggers.Add(new DailyTrigger { DaysInterval = 1 });
+                    }
+
+                    // Create an action that will launch Notepad whenever the trigger fires
+                    td.Actions.Add(new ExecAction(filename, arguments, debugField));
+
+                    // Register the task in the root folder
+                    ts.RootFolder.RegisterTaskDefinition(@"Plotter Scanner", td);
+
+
+                }
+
+            }
+        }
+
+        async System.Threading.Tasks.Task doStuff(string fileName, string args)
         {
             DisableWhileScanning();
             await RunProcessAsync(fileName, args);

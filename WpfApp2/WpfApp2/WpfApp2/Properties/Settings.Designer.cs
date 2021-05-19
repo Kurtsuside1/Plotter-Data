@@ -69,5 +69,17 @@ namespace PlotterDataGH.Properties {
                 this["editingAccount"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string bedrijfsNaam {
+            get {
+                return ((string)(this["bedrijfsNaam"]));
+            }
+            set {
+                this["bedrijfsNaam"] = value;
+            }
+        }
     }
 }

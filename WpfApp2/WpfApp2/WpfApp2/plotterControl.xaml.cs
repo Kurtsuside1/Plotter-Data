@@ -17,12 +17,15 @@ using System.Net.NetworkInformation;
 using System.Windows.Media;
 using System.Threading.Tasks;
 using System;
+using Microsoft.Win32.TaskScheduler;
+using System.Net.Http;
 
 namespace WpfApp2
 {
     /// <summary>
     /// Interaction logic for UserControl1.xaml
     /// </summary>
+    /// 
     public partial class UserControl1 : UserControl
     {
         bool cartridgeHidden = true;
@@ -30,6 +33,8 @@ namespace WpfApp2
         public string plotterIp;
         public string serialnm;
         AutoResetEvent waiter = new AutoResetEvent(false);
+
+        private static readonly HttpClient client = new HttpClient();
 
         public MainWindow ParentForm { get; set; }
 
@@ -39,21 +44,11 @@ namespace WpfApp2
             btnScan.IsEnabled = false;
         }
 
-        public class cartridges
-        {
-            public int ID { get; set; }
-            public string serial_number { get; set; }
-            public int parent_id { get; set; }
-            public string cartridge_model { get; set; }
-            public string volume { get; set; }
-            public string max_volume { get; set; }
-        }
-
         private void SetTimer()
         {
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 1, 0);
+            dispatcherTimer.Interval = new TimeSpan(0, 10, 0);
             dispatcherTimer.Start();
         }
 
@@ -252,6 +247,8 @@ namespace WpfApp2
             //Start the Converted python file and pass the paramater
             string arguments = string.Format(@"{0} {1} {2} {3}", Merk, IP, Settings.Default.sendData, Naam);
 
+            ellStatus.Fill = new SolidColorBrush(Colors.Orange);
+
             //Process myProcess = new Process();
             //myProcess.Exited += new EventHandler(myProcess_Exited);
             //myProcess.StartInfo.FileName = filename;
@@ -261,7 +258,7 @@ namespace WpfApp2
             doStuff(filename, arguments);
         }
 
-        async Task doStuff(string fileName, string args)
+        async System.Threading.Tasks.Task doStuff(string fileName, string args)
         {
             ParentForm.DisableWhileScanning();
             await RunProcessAsync(fileName, args);
@@ -282,7 +279,7 @@ namespace WpfApp2
                 StartInfo =
         {
             FileName = fileName, Arguments = args,
-            UseShellExecute = false, CreateNoWindow = false,
+            UseShellExecute = false, CreateNoWindow = true,
             RedirectStandardOutput = true, RedirectStandardError = true
         },
                 EnableRaisingEvents = true
@@ -312,6 +309,100 @@ namespace WpfApp2
 
             return tcs.Task;
 
+        }
+
+        private void SetTask()
+        {
+            // Get the service on the local machine
+            using (TaskService ts = new TaskService())
+            {
+                // Create a new task definition and assign properties
+                TaskDefinition td = ts.NewTask();
+                td.RegistrationInfo.Description = "Scan Plotter";
+
+                // Create a trigger that will fire the task at this time every other day
+                td.Triggers.Add(new WeeklyTrigger { WeeksInterval = 1 });
+
+                // Create an action that will launch Notepad whenever the trigger fires
+                td.Actions.Add(new ExecAction());
+
+                // Register the task in the root folder
+                ts.RootFolder.RegisterTaskDefinition(@"Test", td);
+            }
+        }
+
+        private void btnSend_Click(object sender, RoutedEventArgs e)
+        {
+            Await();
+        }
+
+        async System.Threading.Tasks.Task Await()
+        {
+            var task = SendPlotterAsync();
+            int timeout = 1000;
+            if (await System.Threading.Tasks.Task.WhenAny(task, System.Threading.Tasks.Task.Delay(timeout)) == task)
+            {
+                // task completed within timeout
+            }
+            else
+            {
+                MessageBox.Show("Verbinding met de Goedhart Servers kon niet gemaakt worden");
+            }
+        }
+
+        async System.Threading.Tasks.Task SendPlotterAsync()
+        {
+            var values = new Dictionary<string, string>
+            {
+                { "postType", "Plotter" },
+                { "serial_number", serialnm },
+                { "model_id", lblMerk.Uid.ToString() },
+                { "meters_printed", lblMeterstand.Content.ToString() },
+                { "naam", lblNaam.Content.ToString() },
+                { "IP", plotterIp },
+                { "bedrijfs_Naam", Settings.Default.bedrijfsNaam }
+            };
+
+            var content = new FormUrlEncodedContent(values);
+
+            var response = await client.PostAsync("http://10.0.0.125/", content);
+
+            var responseString = await response.Content.ReadAsStringAsync();
+
+            DataTable dataTable = new DataTable();
+            SqliteConnection cnn;
+            SqliteCommand cmd = null;
+            cnn = new SqliteConnection("Data Source=plotterData.db;");
+            cnn.Open();
+
+            string query = string.Format("SELECT * FROM `cartridge_reading` where `parent_id` = {0}", plotterId);
+            cmd = new SqliteCommand(query, cnn);
+
+            SqliteDataReader reader = cmd.ExecuteReader();
+            dataTable.Load(reader);
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                SendCartridgeAsync(responseString, row["cartridge_model"].ToString(), row["volume"].ToString(), row["max_volume"].ToString());
+            }
+        }
+
+        async System.Threading.Tasks.Task SendCartridgeAsync(string parent_id, string cartridge_model, string volume, string max_volume = null)
+        {
+            var values = new Dictionary<string, string>
+            {
+                { "postType", "Cartridge" },
+                { "parent_id", parent_id },
+                { "cartridge_model", cartridge_model },
+                { "volume", volume },
+                { "max_volume", max_volume }
+            };
+
+            var content = new FormUrlEncodedContent(values);
+
+            var response = await client.PostAsync("http://10.0.0.125/", content);
+
+            var responseString = await response.Content.ReadAsStringAsync();
         }
     }
 }

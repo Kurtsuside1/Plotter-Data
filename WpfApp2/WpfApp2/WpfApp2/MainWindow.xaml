@@ -20,20 +20,21 @@
                     <StackPanel Orientation="Horizontal"  Width="60px" Height="60px">
                         <Image Source="Pictures/goedhartgowhite.png"></Image>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal"  Width="60px" Height="60px">
-                        <Button x:Name="btnAdd" Background="{x:Null}" BorderBrush="{x:Null}" Click="btnAdd_Click">
-                            <iconPacks:PackIconModern 
-                                      Width="40px"
-                                      Height="40px"
-                                      Kind="Add" />
-                        </Button>
-                    </StackPanel>
+                    
                 </StackPanel>
             </Grid>
             <Grid HorizontalAlignment="Right">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <StackPanel Orientation="Horizontal"  Width="60px" Height="60px">
+                            <StackPanel Orientation="Horizontal"  Width="60px" Height="60px">
+                                <Button x:Name="btnAdd" Background="{x:Null}" BorderBrush="{x:Null}" Click="btnAdd_Click">
+                                    <iconPacks:PackIconModern 
+                                      Width="40px"
+                                      Height="40px"
+                                      Kind="Add" />
+                                </Button>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"  Width="60px" Height="60px">
                             <Button x:Name="btnSendMail" Background="{x:Null}" BorderBrush="{x:Null}" Click="btnSendMail_Click">
                                 <iconPacks:PackIconModern 
                                       Width="40px"

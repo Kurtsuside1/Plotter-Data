@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using PlotterDataGH;
 using Microsoft.Data.Sqlite;
+using Microsoft.Win32.TaskScheduler;
+using System.Reflection;
 
 namespace WpfApp2
 {
@@ -32,6 +34,7 @@ namespace WpfApp2
         public AddPlotter()
         {
             InitializeComponent();
+            btnDelete.Visibility = Visibility.Hidden;
 
             DataTable dataTable = new DataTable();
             SqliteConnection cnn;
@@ -57,16 +60,6 @@ namespace WpfApp2
             }
         }
 
-        public class plotter
-        {
-            public int ID { get; set; }
-            public string serial_number { get; set; }
-            public string plotterNaam { get; set; }
-            public string plotterIP { get; set; }
-            public string plotterType { get; set; }
-            public string meters_printed { get; set; }
-        }
-
         public void editForm(int plotterId_m)
         {
             plotterId = plotterId_m;
@@ -82,6 +75,7 @@ namespace WpfApp2
             SqliteDataReader reader = cmd.ExecuteReader();
             dataTable.Load(reader);
 
+            btnDelete.Visibility = Visibility.Visible;
             serialNumber = dataTable.Rows[0]["serial_number"].ToString();
             tbxPlotIP.Text = dataTable.Rows[0]["IP"].ToString();
             tbxPlotNaam.Text = dataTable.Rows[0]["Naam"].ToString();
@@ -162,6 +156,51 @@ namespace WpfApp2
 
                 ParentForm.RunScan((cbxPlotterType.SelectedItem as ComboBoxItem).Uid.ToString(), tbxPlotIP.Text, tbxPlotNaam.Text);
 
+
+                //Get the service on the local machine
+                using (TaskService ts = new TaskService())
+                {
+
+                    var debugField = System.IO.Path.GetDirectoryName(
+Assembly.GetExecutingAssembly().GetName().CodeBase);
+
+                    debugField = debugField.Substring(6);
+
+                    var filename = debugField + @"/Selenium.exe";
+
+                    var scheduler = debugField + @"/Test";
+
+                    //Start the Converted python file and pass the paramater
+                    string arguments = string.Format(@"{0} {1} {2} {3}", (cbxPlotterType.SelectedItem as ComboBoxItem).Uid.ToString(), tbxPlotIP.Text, Settings.Default.sendData, tbxPlotNaam.Text);
+
+                    TaskDefinition td = ts.NewTask();
+
+                    if (ts.GetTask("Plotter Scanner") != null)
+                    {
+                        td = ts.GetTask("Plotter Scanner").Definition;
+                    }
+
+                    // Create a new task definition and assign properties
+
+                    td.RegistrationInfo.Description = "Scans plotter";
+                    td.RegistrationInfo.Author = "Goedhart Groep";
+
+                    if (td.Triggers == null)
+                    {
+                        // Create a trigger that will fire the task at this time every day
+                        td.Triggers.Add(new DailyTrigger { DaysInterval = 1 });
+                    }
+
+                    // Create an action that will launch Notepad whenever the trigger fires
+                    td.Actions.Add(new ExecAction(filename, arguments, debugField));
+
+                    
+
+                    // Register the task in the root folder
+                    ts.RootFolder.RegisterTaskDefinition(@"Plotter Scanner", td);
+
+
+                }
                 this.Close();
             }
             else
@@ -188,9 +227,19 @@ namespace WpfApp2
 
                 cnn1.Close();
 
+                // Get the service on the local machine
+                using (TaskService ts = new TaskService())
+                {
+                    if (ts.GetTask("Plotter Scanner") != null)
+                    {
+                        ts.RootFolder.DeleteTask("Plotter Scanner");
+                    }
+                }
+
                 ParentForm.fillerGrid.RowDefinitions.Clear();
                 ParentForm.fillerGrid.Children.Clear();
                 ParentForm.LoadData();
+                ParentForm.TaskCreater();
 
                 this.Close();
 

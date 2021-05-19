@@ -205,7 +205,7 @@
           "lib/netstandard2.0/Microsoft.Data.Sqlite.dll": {}
         }
       },
-      "Microsoft.NETCore.Platforms/3.1.0": {
+      "Microsoft.NETCore.Platforms/5.0.0": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -223,23 +223,19 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.Win32.Registry/4.7.0": {
+      "Microsoft.Win32.Registry/5.0.0": {
         "type": "package",
         "dependencies": {
-          "System.Security.AccessControl": "4.7.0",
-          "System.Security.Principal.Windows": "4.7.0"
+          "System.Security.AccessControl": "5.0.0",
+          "System.Security.Principal.Windows": "5.0.0"
         },
         "compile": {
-          "ref/netstandard2.0/_._": {}
+          "ref/netstandard2.0/Microsoft.Win32.Registry.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Win32.Registry.dll": {}
         },
         "runtimeTargets": {
-          "runtimes/unix/lib/netstandard2.0/Microsoft.Win32.Registry.dll": {
-            "assetType": "runtime",
-            "rid": "unix"
-          },
           "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.dll": {
             "assetType": "runtime",
             "rid": "win"
@@ -561,6 +557,26 @@
           "ref/netstandard1.3/_._": {}
         }
       },
+      "System.Diagnostics.EventLog/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "5.0.0",
+          "Microsoft.Win32.Registry": "5.0.0",
+          "System.Security.Principal.Windows": "5.0.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Diagnostics.EventLog.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Diagnostics.EventLog.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp2.0/System.Diagnostics.EventLog.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
       "System.Drawing.Common/4.7.0": {
         "type": "package",
         "dependencies": {
@@ -700,11 +716,11 @@
           "ref/netstandard1.5/_._": {}
         }
       },
-      "System.Security.AccessControl/4.7.0": {
+      "System.Security.AccessControl/5.0.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
-          "System.Security.Principal.Windows": "4.7.0"
+          "Microsoft.NETCore.Platforms": "5.0.0",
+          "System.Security.Principal.Windows": "5.0.0"
         },
         "compile": {
           "ref/netstandard2.0/System.Security.AccessControl.dll": {}
@@ -780,7 +796,7 @@
           "lib/netcoreapp3.0/System.Security.Permissions.dll": {}
         }
       },
-      "System.Security.Principal.Windows/4.7.0": {
+      "System.Security.Principal.Windows/5.0.0": {
         "type": "package",
         "compile": {
           "ref/netcoreapp3.0/System.Security.Principal.Windows.dll": {}
@@ -863,6 +879,43 @@
           "runtimes/win/lib/netcoreapp3.0/System.Windows.Extensions.dll": {
             "assetType": "runtime",
             "rid": "win"
+          }
+        }
+      },
+      "TaskScheduler/2.9.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Win32.Registry": "5.0.0",
+          "System.Diagnostics.EventLog": "5.0.0",
+          "System.Security.AccessControl": "5.0.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.Win32.TaskScheduler.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Win32.TaskScheduler.dll": {}
+        },
+        "resource": {
+          "lib/netcoreapp3.1/de/Microsoft.Win32.TaskScheduler.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netcoreapp3.1/es/Microsoft.Win32.TaskScheduler.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netcoreapp3.1/fr/Microsoft.Win32.TaskScheduler.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netcoreapp3.1/it/Microsoft.Win32.TaskScheduler.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netcoreapp3.1/pl/Microsoft.Win32.TaskScheduler.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netcoreapp3.1/ru/Microsoft.Win32.TaskScheduler.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netcoreapp3.1/zh-CN/Microsoft.Win32.TaskScheduler.resources.dll": {
+            "locale": "zh-CN"
           }
         }
       }
@@ -1775,17 +1828,18 @@
         "microsoft.data.sqlite.core.nuspec"
       ]
     },
-    "Microsoft.NETCore.Platforms/3.1.0": {
-      "sha512": "z7aeg8oHln2CuNulfhiLYxCVMPEwBl3rzicjvIX+4sUuCwvXw5oXQEtbiU2c0z4qYL5L3Kmx0mMA/+t/SbY67w==",
+    "Microsoft.NETCore.Platforms/5.0.0": {
+      "sha512": "VyPlqzH2wavqquTcYpkIIAQ6WdenuKoFN0BdYBbCWsclXacSOHNQn66Gt4z5NBqEYW0FAPm5rlvki9ZiCij5xQ==",
       "type": "package",
-      "path": "microsoft.netcore.platforms/3.1.0",
+      "path": "microsoft.netcore.platforms/5.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
-        "microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+        "microsoft.netcore.platforms.5.0.0.nupkg.sha512",
         "microsoft.netcore.platforms.nuspec",
         "runtime.json",
         "useSharedDesignerContext.txt",
@@ -1807,13 +1861,14 @@
         "runtime.json"
       ]
     },
-    "Microsoft.Win32.Registry/4.7.0": {
-      "sha512": "KSrRMb5vNi0CWSGG1++id2ZOs/1QhRqROt+qgbEAdQuGjGrFcl4AOl4/exGPUYz2wUnU42nvJqon1T3U0kPXLA==",
+    "Microsoft.Win32.Registry/5.0.0": {
+      "sha512": "dDoKi0PnDz31yAyETfRntsLArTlVAVzUzCIvvEDsDsucrl33Dl8pIJG06ePTJTI3tGpeyHS9Cq7Foc/s4EeKcg==",
       "type": "package",
-      "path": "microsoft.win32.registry/4.7.0",
+      "path": "microsoft.win32.registry/5.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net46/Microsoft.Win32.Registry.dll",
@@ -1822,13 +1877,11 @@
         "lib/netstandard1.3/Microsoft.Win32.Registry.dll",
         "lib/netstandard2.0/Microsoft.Win32.Registry.dll",
         "lib/netstandard2.0/Microsoft.Win32.Registry.xml",
-        "microsoft.win32.registry.4.7.0.nupkg.sha512",
+        "microsoft.win32.registry.5.0.0.nupkg.sha512",
         "microsoft.win32.registry.nuspec",
         "ref/net46/Microsoft.Win32.Registry.dll",
         "ref/net461/Microsoft.Win32.Registry.dll",
         "ref/net461/Microsoft.Win32.Registry.xml",
-        "ref/net472/Microsoft.Win32.Registry.dll",
-        "ref/net472/Microsoft.Win32.Registry.xml",
         "ref/netstandard1.3/Microsoft.Win32.Registry.dll",
         "ref/netstandard1.3/Microsoft.Win32.Registry.xml",
         "ref/netstandard1.3/de/Microsoft.Win32.Registry.xml",
@@ -1842,8 +1895,6 @@
         "ref/netstandard1.3/zh-hant/Microsoft.Win32.Registry.xml",
         "ref/netstandard2.0/Microsoft.Win32.Registry.dll",
         "ref/netstandard2.0/Microsoft.Win32.Registry.xml",
-        "runtimes/unix/lib/netstandard2.0/Microsoft.Win32.Registry.dll",
-        "runtimes/unix/lib/netstandard2.0/Microsoft.Win32.Registry.xml",
         "runtimes/win/lib/net46/Microsoft.Win32.Registry.dll",
         "runtimes/win/lib/net461/Microsoft.Win32.Registry.dll",
         "runtimes/win/lib/net461/Microsoft.Win32.Registry.xml",
@@ -2482,6 +2533,32 @@
         "ref/xamarinwatchos10/_._",
         "system.diagnostics.debug.4.3.0.nupkg.sha512",
         "system.diagnostics.debug.nuspec"
+      ]
+    },
+    "System.Diagnostics.EventLog/5.0.0": {
+      "sha512": "FHkCwUfsTs+/5tsK+c0egLfacUgbhvcwi3wUFWSEEArSXao343mYqcpOVVFMlcCkdNtjU4YwAWaKYwal6f02og==",
+      "type": "package",
+      "path": "system.diagnostics.eventlog/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Diagnostics.EventLog.dll",
+        "lib/net461/System.Diagnostics.EventLog.xml",
+        "lib/netstandard2.0/System.Diagnostics.EventLog.dll",
+        "lib/netstandard2.0/System.Diagnostics.EventLog.xml",
+        "ref/net461/System.Diagnostics.EventLog.dll",
+        "ref/net461/System.Diagnostics.EventLog.xml",
+        "ref/netstandard2.0/System.Diagnostics.EventLog.dll",
+        "ref/netstandard2.0/System.Diagnostics.EventLog.xml",
+        "runtimes/win/lib/netcoreapp2.0/System.Diagnostics.EventLog.dll",
+        "runtimes/win/lib/netcoreapp2.0/System.Diagnostics.EventLog.xml",
+        "system.diagnostics.eventlog.5.0.0.nupkg.sha512",
+        "system.diagnostics.eventlog.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Drawing.Common/4.7.0": {
@@ -3197,13 +3274,14 @@
         "system.runtime.extensions.nuspec"
       ]
     },
-    "System.Security.AccessControl/4.7.0": {
-      "sha512": "JECvTt5aFF3WT3gHpfofL2MNNP6v84sxtXxpqhLBCcDRzqsPBmHhQ6shv4DwwN2tRlzsUxtb3G9M3763rbXKDg==",
+    "System.Security.AccessControl/5.0.0": {
+      "sha512": "dagJ1mHZO3Ani8GH0PHpPEe/oYO+rVdbQjvjJkBRNQkX4t0r1iaeGn8+/ybkSLEan3/slM0t59SVdHzuHf2jmw==",
       "type": "package",
-      "path": "system.security.accesscontrol/4.7.0",
+      "path": "system.security.accesscontrol/5.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net46/System.Security.AccessControl.dll",
@@ -3237,7 +3315,7 @@
         "runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.xml",
         "runtimes/win/lib/netstandard1.3/System.Security.AccessControl.dll",
         "runtimes/win/lib/uap10.0.16299/_._",
-        "system.security.accesscontrol.4.7.0.nupkg.sha512",
+        "system.security.accesscontrol.5.0.0.nupkg.sha512",
         "system.security.accesscontrol.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -3440,13 +3518,14 @@
         "version.txt"
       ]
     },
-    "System.Security.Principal.Windows/4.7.0": {
-      "sha512": "ojD0PX0XhneCsUbAZVKdb7h/70vyYMDYs85lwEI+LngEONe/17A0cFaRFqZU+sOEidcVswYWikYOQ9PPfjlbtQ==",
+    "System.Security.Principal.Windows/5.0.0": {
+      "sha512": "t0MGLukB5WAVU9bO3MGzvlGnyJPgUlcwerXn1kzBRjwLKixT96XV0Uza41W49gVd8zEMFu9vQEFlv0IOrytICA==",
       "type": "package",
-      "path": "system.security.principal.windows/4.7.0",
+      "path": "system.security.principal.windows/5.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net46/System.Security.Principal.Windows.dll",
@@ -3488,7 +3567,7 @@
         "runtimes/win/lib/netcoreapp2.1/System.Security.Principal.Windows.xml",
         "runtimes/win/lib/netstandard1.3/System.Security.Principal.Windows.dll",
         "runtimes/win/lib/uap10.0.16299/_._",
-        "system.security.principal.windows.4.7.0.nupkg.sha512",
+        "system.security.principal.windows.5.0.0.nupkg.sha512",
         "system.security.principal.windows.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -3720,6 +3799,108 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "TaskScheduler/2.9.1": {
+      "sha512": "wtiNKxMnWS4lpVvJooJM7FbATUpENusKsPfyV1gbusJS9WyZ7XfVp+S75XK8tpD4Grm6XQmTOlxwz2K4sCmPOw==",
+      "type": "package",
+      "path": "taskscheduler/2.9.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/Microsoft.Win32.TaskScheduler.dll",
+        "lib/net20/Microsoft.Win32.TaskScheduler.xml",
+        "lib/net20/de/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net20/es/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net20/fr/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net20/it/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net20/pl/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net20/ru/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net20/zh-CN/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net35/Microsoft.Win32.TaskScheduler.dll",
+        "lib/net35/Microsoft.Win32.TaskScheduler.xml",
+        "lib/net35/de/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net35/es/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net35/fr/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net35/it/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net35/pl/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net35/ru/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net35/zh-CN/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net40/Microsoft.Win32.TaskScheduler.dll",
+        "lib/net40/Microsoft.Win32.TaskScheduler.xml",
+        "lib/net40/de/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net40/es/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net40/fr/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net40/it/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net40/pl/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net40/ru/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net40/zh-CN/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net452/Microsoft.Win32.TaskScheduler.dll",
+        "lib/net452/Microsoft.Win32.TaskScheduler.xml",
+        "lib/net452/de/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net452/es/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net452/fr/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net452/it/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net452/pl/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net452/ru/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net452/zh-CN/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net5.0-windows7.0/Microsoft.Win32.TaskScheduler.dll",
+        "lib/net5.0-windows7.0/Microsoft.Win32.TaskScheduler.xml",
+        "lib/net5.0-windows7.0/de/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net5.0-windows7.0/es/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net5.0-windows7.0/fr/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net5.0-windows7.0/it/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net5.0-windows7.0/pl/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net5.0-windows7.0/ru/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/net5.0-windows7.0/zh-CN/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp2.0/Microsoft.Win32.TaskScheduler.dll",
+        "lib/netcoreapp2.0/Microsoft.Win32.TaskScheduler.xml",
+        "lib/netcoreapp2.0/de/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp2.0/es/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp2.0/fr/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp2.0/it/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp2.0/pl/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp2.0/ru/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp2.0/zh-CN/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp2.1/Microsoft.Win32.TaskScheduler.dll",
+        "lib/netcoreapp2.1/Microsoft.Win32.TaskScheduler.xml",
+        "lib/netcoreapp2.1/de/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp2.1/es/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp2.1/fr/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp2.1/it/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp2.1/pl/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp2.1/ru/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp2.1/zh-CN/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp3.0/Microsoft.Win32.TaskScheduler.dll",
+        "lib/netcoreapp3.0/Microsoft.Win32.TaskScheduler.xml",
+        "lib/netcoreapp3.0/de/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp3.0/es/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp3.0/fr/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp3.0/it/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp3.0/pl/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp3.0/ru/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp3.0/zh-CN/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp3.1/Microsoft.Win32.TaskScheduler.dll",
+        "lib/netcoreapp3.1/Microsoft.Win32.TaskScheduler.xml",
+        "lib/netcoreapp3.1/de/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp3.1/es/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp3.1/fr/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp3.1/it/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp3.1/pl/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp3.1/ru/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netcoreapp3.1/zh-CN/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netstandard2.0/Microsoft.Win32.TaskScheduler.dll",
+        "lib/netstandard2.0/Microsoft.Win32.TaskScheduler.xml",
+        "lib/netstandard2.0/de/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netstandard2.0/es/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netstandard2.0/fr/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netstandard2.0/it/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netstandard2.0/pl/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netstandard2.0/ru/Microsoft.Win32.TaskScheduler.resources.dll",
+        "lib/netstandard2.0/zh-CN/Microsoft.Win32.TaskScheduler.resources.dll",
+        "taskscheduler.2.9.1.nupkg.sha512",
+        "taskscheduler.nuspec",
+        "tsnew48.png"
+      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -3731,23 +3912,24 @@
       "MySql.Data >= 8.0.23",
       "Newtonsoft.Json >= 13.0.1",
       "System.Data.SqlClient >= 4.8.2",
-      "System.Linq >= 4.3.0"
+      "System.Linq >= 4.3.0",
+      "TaskScheduler >= 2.9.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kurtp\\.nuget\\packages\\": {}
+    "C:\\Users\\RproBr\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Gitzooi\\Plotter-Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
+      "projectUniqueName": "C:\\Users\\RproBr\\Desktop\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
       "projectName": "PlotterDataGH",
-      "projectPath": "E:\\Gitzooi\\Plotter-Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
-      "packagesPath": "C:\\Users\\kurtp\\.nuget\\packages\\",
-      "outputPath": "E:\\Gitzooi\\Plotter-Data\\WpfApp2\\WpfApp2\\WpfApp2\\obj\\",
+      "projectPath": "C:\\Users\\RproBr\\Desktop\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
+      "packagesPath": "C:\\Users\\RproBr\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\RproBr\\Desktop\\WpfApp2\\WpfApp2\\WpfApp2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\kurtp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\RproBr\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3804,6 +3986,10 @@
           "System.Linq": {
             "target": "Package",
             "version": "[4.3.0, )"
+          },
+          "TaskScheduler": {
+            "target": "Package",
+            "version": "[2.9.1, )"
           }
         },
         "imports": [
@@ -3824,7 +4010,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

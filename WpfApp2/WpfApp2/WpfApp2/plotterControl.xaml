@@ -22,13 +22,16 @@
             </Grid.ColumnDefinitions>
         </Grid>
         <Grid Grid.Column="1" HorizontalAlignment="Right">
-            <Button Grid.Column="4" x:Name="btnExpand" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="btnExpand_Click">
+            <Button Grid.Column="5" x:Name="btnExpand" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="btnExpand_Click">
                 <iconPacks:PackIconFontAwesome Kind="AngleDoubleDownSolid" />
             </Button>
-            <Button Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click">
+            <Button Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click">
                 <iconPacks:PackIconForkAwesome Kind="Cog" />
             </Button>
-            <Button x:Name="btnScan" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click_1">
+            <Button x:Name="btnSend" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="btnSend_Click">
+                <iconPacks:PackIconFontAwesome Kind="TelegramPlaneBrands" />
+            </Button>
+            <Button x:Name="btnScan" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click_1">
                 <iconPacks:PackIconFontAwesome Kind="BinocularsSolid" />
             </Button>
             <!--<MediaElement Resources="giphy.gif"></MediaElement>-->
@@ -36,6 +39,7 @@
             <Label x:Name="lblTime" Content="Time" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
