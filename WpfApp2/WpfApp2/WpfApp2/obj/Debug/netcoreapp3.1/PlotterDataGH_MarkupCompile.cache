@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\RproBr\source\repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\obj\Debug\netcoreapp3.1\
+C:\Users\RproBr\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\obj\Debug\netcoreapp3.1\
 PlotterDataGH
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-C:\Users\RproBr\source\repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\App.xaml
+C:\Users\RproBr\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\App.xaml
 7788893747
 
-141608731973
+121882195201
 2461622883705
 AddPlotter.xaml;cartridgeControl.xaml;InitSetup.xaml;MainWindow.xaml;plotterControl.xaml;SettingsPage.xaml;Themes\Generic.xaml;
 
