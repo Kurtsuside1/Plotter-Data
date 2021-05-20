@@ -1,3 +1,4 @@
 id,serial_number,model_id,meters_printed,datetime,naam,IP,bedrijfs_Naam,plotter_type
 6,CN61U7H02Q,1,52385.53 m²,2021-04-19 10:08:20.961339,SQLITE,10.0.0.48,,HP DesignJet
-9,BAJA04090,3,486.2 m2,2021-05-20 12:18:32.762086,TestplotterCanon,10.0.0.117,False,Canon Tx3000
+8,MY79T8Q008,1,162024.45 m²,2021-05-10 12:01:33.126600,Tested,10.0.0.39,,HP DesignJet
+9,BAJA04090,3,486.2 m2,2021-05-20 13:40:43.150138,TestplotterCanon,10.0.0.117,False,Canon Tx3000

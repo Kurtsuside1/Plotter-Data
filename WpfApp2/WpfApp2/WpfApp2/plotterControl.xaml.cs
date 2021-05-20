@@ -46,6 +46,7 @@ namespace WpfApp2
 
         private void SetTimer()
         {
+            //Set a timer between pings
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 10, 0);
@@ -54,6 +55,7 @@ namespace WpfApp2
 
         public void loadData()
         {
+            //Load cartridge data and put it in a class called cartridgeControl
             DataTable dataTable = new DataTable();
             SqliteConnection cnn;
             SqliteCommand cmd = null;
@@ -92,6 +94,7 @@ namespace WpfApp2
         #region Check status
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
+            //Send a ping to the plotter and if it responds turn the light green
             SendPing();
         }
 
@@ -175,6 +178,7 @@ namespace WpfApp2
 
         private void btnExpand_Click(object sender, RoutedEventArgs e)
         {
+            //Expand the control which will show the cartridges
             if(cartridgeHidden)
             {
                 for(int x = 0; x <= plotterControl.RowDefinitions.Count - 1; x++)
@@ -215,6 +219,7 @@ namespace WpfApp2
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            //Run a scan of this specific plotter
             RunScan(lblMerk.Uid.ToString(), plotterIp, lblNaam.Content.ToString());
             MahApps.Metro.IconPacks.PackIconFontAwesome fe = btnScan.Content as MahApps.Metro.IconPacks.PackIconFontAwesome;
             fe.Kind = MahApps.Metro.IconPacks.PackIconFontAwesomeKind.SyncSolid;
@@ -302,6 +307,7 @@ namespace WpfApp2
         #region Send Data
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
+            //Send data to Goedhart Group
             Await();
         }
 
