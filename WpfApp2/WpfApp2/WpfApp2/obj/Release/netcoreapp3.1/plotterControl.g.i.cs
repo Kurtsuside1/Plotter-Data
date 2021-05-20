@@ -154,7 +154,7 @@ namespace WpfApp2 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/PlotterDataGH;component/plottercontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/PlotterDataGH;V1.0.0.0;component/plottercontrol.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\plotterControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

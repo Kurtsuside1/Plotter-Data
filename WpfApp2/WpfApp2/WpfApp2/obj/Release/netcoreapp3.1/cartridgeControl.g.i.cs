@@ -69,7 +69,7 @@ namespace WpfApp2 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/PlotterDataGH;component/cartridgecontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/PlotterDataGH;V1.0.0.0;component/cartridgecontrol.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\cartridgeControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
