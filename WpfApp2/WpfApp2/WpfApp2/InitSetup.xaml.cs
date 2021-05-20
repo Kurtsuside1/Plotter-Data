@@ -37,6 +37,7 @@ namespace WpfApp2
         {
             InitializeComponent();
 
+            //If the account is not being edited create a new instance
             if (Settings.Default.editingAccount == false)
             {
                 DataTable dataTable = new DataTable();
@@ -69,9 +70,10 @@ namespace WpfApp2
             }
 
         }
-
+                
         public void editingMode()
         {
+            //If the account is being edited
             DataTable dataTable = new DataTable();
             SqliteConnection cnn;
             SqliteCommand cmd = null;
@@ -89,22 +91,12 @@ namespace WpfApp2
             tbxEmail.Text = dataTable.Rows[0]["email"].ToString();
             tbxTelefoonnummer.Text = dataTable.Rows[0]["telefoonnummer"].ToString();
             cbxSendData.IsChecked = Settings.Default.sendData;
-
         }
             
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        public class data
-        {
-            public string Bedrijfsnaam { get; set; }
-            public string Contactpersoon { get; set; }
-            public string Email { get; set; }
-            public string Telefoonnummer { get; set; }
-            public bool SendData { get; set; }
         }
 
         private void btnNext_Click(object sender, RoutedEventArgs e)
@@ -117,26 +109,11 @@ namespace WpfApp2
                     Settings.Default.sendData = false;
                     if (cbxSendData.IsChecked == true)
                     {
-                        //MySqlConnection cnn = mysql.openConnection();
-
-                        //string queryO = string.Format("INSERT INTO users (bedrijfs_Naam, contactpersoon, email, telefoonnummer) VALUES('{0}', '{1}', '{2}', '{3}')", tbxBedrijfsnaam.Text, tbxContactpersoon.Text, tbxEmail.Text, tbxTelefoonnummer.Text);
-                        ////create command and assign the query and connection from the constructor
-                        //MySqlCommand cmd = new MySqlCommand(queryO, cnn);
-
-                        ////Execute command
-                        //cmd.ExecuteNonQuery();
-                        //long userID = cmd.LastInsertedId;
-
-                        //Settings.Default.ID = Convert.ToInt32(userID);
-                        //Settings.Default.Save();
-
-                        //Settings.Default.sendData = true;
-
-                        //cnn.Close();
-
+                        //Send account data to Goedhart Group
                         Await();
                     }
 
+                    //Create a new account
                     SqliteConnection cnn1;
                     cnn1 = new SqliteConnection("Data Source=plotterData.db;");
                     cnn1.Open();
@@ -154,21 +131,6 @@ namespace WpfApp2
 
                     Settings.Default.Save();
 
-                    //using (TaskService ts = new TaskService())
-                    //{
-                    //    // Create a new task definition and assign properties
-                    //    TaskDefinition td = ts.NewTask();
-                    //    td.RegistrationInfo.Description = "Scans plotter";
-                    //    // Register the task in the root folder
-                    //    ts.RootFolder.RegisterTaskDefinition(@"Plotter Scanner", td);
-
-                    //    //// Remove the task we just created
-                    //    //ts.RootFolder.DeleteTask("Test");
-
-                    //    this.Close();
-                    //}
-
-
                     MainWindow mw = new MainWindow();
                     mw.Show();
                     this.Close();
@@ -185,10 +147,11 @@ namespace WpfApp2
                     Settings.Default.sendData = false;
                     if (cbxSendData.IsChecked == true)
                     {
+                        //Send account data to Goedhart Group
                         Await();
-                        
                     }
 
+                    //Update the current acount
                     SqliteConnection cnn1;
                     cnn1 = new SqliteConnection("Data Source=plotterData.db;");
                     cnn1.Open();
@@ -220,6 +183,7 @@ namespace WpfApp2
 
         async System.Threading.Tasks.Task Await()
         {
+            //Send data to Goedhart Group
             int timeout = 1000;
             var task = SendUserAsync(tbxBedrijfsnaam.Text, tbxContactpersoon.Text, tbxEmail.Text, tbxTelefoonnummer.Text);
             if (await System.Threading.Tasks.Task.WhenAny(task, System.Threading.Tasks.Task.Delay(timeout)) == task)
@@ -234,6 +198,7 @@ namespace WpfApp2
 
         async System.Threading.Tasks.Task SendUserAsync(string bedrijfsnaam, string contactpersoon, string email, string telefoonnummer)
         {
+            //Send data to Goedhart Group
             var values = new Dictionary<string, string>
             {
                 { "postType", "Users" },
@@ -254,6 +219,7 @@ namespace WpfApp2
 
         bool IsValidEmail(string email)
         {
+            //Check if the given email is valid
             try
             {
                 var addr = new System.Net.Mail.MailAddress(email);
@@ -267,7 +233,8 @@ namespace WpfApp2
 
         private void cbxSendData_Checked(object sender, RoutedEventArgs e)
         {
-            if(cbxSendData.IsChecked == false)
+            //Messagebox for getting authorization to send data to Goedhart groep
+            if (cbxSendData.IsChecked == false)
             {
                 sendData = false;
             }

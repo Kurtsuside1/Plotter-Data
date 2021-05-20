@@ -128,3 +128,5 @@ C:\Users\RproBr\Desktop\WpfApp2\WpfApp2\WpfApp2\bin\Release\netcoreapp3.1\runtim
 C:\Users\RproBr\Desktop\WpfApp2\WpfApp2\WpfApp2\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
 C:\Users\RproBr\Desktop\WpfApp2\WpfApp2\WpfApp2\bin\Release\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 C:\Users\RproBr\Desktop\WpfApp2\WpfApp2\WpfApp2\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Users\RproBr\Desktop\WpfApp2\WpfApp2\WpfApp2\bin\Release\netcoreapp3.1\NewWay.exe
+C:\Users\RproBr\Desktop\WpfApp2\WpfApp2\WpfApp2\bin\Release\netcoreapp3.1\ghWebscraper.exe

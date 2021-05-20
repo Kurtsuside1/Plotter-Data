@@ -31,6 +31,7 @@ namespace WpfApp2
             LoadData();
         }
 
+        //While a scan is in progress disable the scanning button
         public void DisableWhileScanning()
         {
             foreach (UserControl1 row in fillerGrid.Children)
@@ -39,6 +40,7 @@ namespace WpfApp2
             }
         }
 
+        //Load the data from the local database file
         public void LoadData()
         {
             dataTable.Clear();
@@ -78,6 +80,7 @@ namespace WpfApp2
                 addedRows++;
             }
 
+            //Create a CSV file for mailing
             try
             {
                 StringBuilder sb = new StringBuilder();
@@ -131,6 +134,7 @@ namespace WpfApp2
 
         }
 
+        //Add another plotter
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddPlotter addPlotter = new AddPlotter();
@@ -138,12 +142,16 @@ namespace WpfApp2
             addPlotter.Show();
         }
 
+
+        //Opens the settings page
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             SettingsPage sp = new SettingsPage();
             sp.Show();
             this.Close();
         }
+
+        #region Mailer
 
         private void btnSendMail_Click(object sender, RoutedEventArgs e)
         {
@@ -205,26 +213,7 @@ namespace WpfApp2
             return mailBody;
         }
 
-        public void RunScan(string Merk, string IP, string Naam)
-        {
-            var debugField = System.IO.Path.GetDirectoryName(
-    Assembly.GetExecutingAssembly().GetName().CodeBase);
-
-            debugField = debugField.Substring(6);
-
-            var filename = debugField + @"/Selenium.exe";
-
-            //Start the Converted python file and pass the paramater
-            string arguments = string.Format(@"{0} {1} {2} {3}", Merk, IP, Settings.Default.sendData, Naam);
-
-            //Process myProcess = new Process();
-            //myProcess.Exited += new EventHandler(myProcess_Exited);
-            //myProcess.StartInfo.FileName = filename;
-            //myProcess.StartInfo.Arguments = arguments;
-            //myProcess.Start();
-
-            doStuff(filename, arguments);
-        }
+        #endregion
 
         public void TaskCreater()
         {
@@ -248,10 +237,10 @@ namespace WpfApp2
 
                     debugField = debugField.Substring(6);
 
-                    var filename = debugField + @"/Selenium.exe";
+                    var filename = debugField + @"/ghWebscraper.exe";
 
                     //Start the Converted python file and pass the paramater
-                    string arguments = string.Format(@"{0} {1} {2} {3}", row.lblMerk.Uid.ToString(), row.plotterIp, Settings.Default.sendData, row.lblNaam.Content);
+                    string arguments = string.Format(@"{0} {1} {2} {3}", row.lblMerk.Uid.ToString(), row.plotterIp, Settings.Default.bedrijfsNaam, row.lblNaam.Content);
 
                     TaskDefinition td = ts.NewTask();
 
@@ -281,6 +270,62 @@ namespace WpfApp2
                 }
 
             }
+
+            using (TaskService ts = new TaskService())
+            {
+                var debugField = System.IO.Path.GetDirectoryName(
+    Assembly.GetExecutingAssembly().GetName().CodeBase);
+
+                debugField = debugField.Substring(6);
+
+                var filename = debugField + @"/NewWay.exe";
+
+                TaskDefinition td = ts.NewTask();
+
+                if (ts.GetTask("Plotter Scanner") != null)
+                {
+                    td = ts.GetTask("Plotter Scanner").Definition;
+                }
+
+                // Create a new task definition and assign properties
+
+                td.RegistrationInfo.Description = "Scans plotter";
+                td.RegistrationInfo.Author = "Goedhart Groep";
+
+                if (td.Triggers.Count == 0)
+                {
+                    // Create a trigger that will fire the task at this time every day
+                    td.Triggers.Add(new DailyTrigger { DaysInterval = 1 });
+                }
+
+                // Create an action that will launch Notepad whenever the trigger fires
+                td.Actions.Add(new ExecAction(filename, null, debugField));
+
+                // Register the task in the root folder
+                ts.RootFolder.RegisterTaskDefinition(@"Plotter Scanner", td);
+            }
+        }
+
+        #region Scanning
+        public void RunScan(string Merk, string IP, string Naam)
+        {
+            var debugField = System.IO.Path.GetDirectoryName(
+    Assembly.GetExecutingAssembly().GetName().CodeBase);
+
+            debugField = debugField.Substring(6);
+
+            var filename = debugField + @"/ghWebscraper.exe";
+
+            //Start the Converted python file and pass the paramater
+            string arguments = string.Format(@"{0} {1} {2} {3}", Merk, IP, Settings.Default.bedrijfsNaam, Naam);
+
+            //Process myProcess = new Process();
+            //myProcess.Exited += new EventHandler(myProcess_Exited);
+            //myProcess.StartInfo.FileName = filename;
+            //myProcess.StartInfo.Arguments = arguments;
+            //myProcess.Start();
+
+            doStuff(filename, arguments);
         }
 
         async System.Threading.Tasks.Task doStuff(string fileName, string args)
@@ -335,5 +380,7 @@ namespace WpfApp2
             return tcs.Task;
 
         }
+
+        #endregion
     }
 }

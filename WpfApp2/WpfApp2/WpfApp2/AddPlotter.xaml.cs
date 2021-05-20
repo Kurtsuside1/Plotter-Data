@@ -166,9 +166,9 @@ Assembly.GetExecutingAssembly().GetName().CodeBase);
 
                     debugField = debugField.Substring(6);
 
-                    var filename = debugField + @"/Selenium.exe";
+                    var filename = debugField + @"/ghWebscraper.exe";
 
-                    var scheduler = debugField + @"/Test";
+                    //var scheduler = debugField + @"/Test";
 
                     //Start the Converted python file and pass the paramater
                     string arguments = string.Format(@"{0} {1} {2} {3}", (cbxPlotterType.SelectedItem as ComboBoxItem).Uid.ToString(), tbxPlotIP.Text, Settings.Default.sendData, tbxPlotNaam.Text);
@@ -200,6 +200,40 @@ Assembly.GetExecutingAssembly().GetName().CodeBase);
                     ts.RootFolder.RegisterTaskDefinition(@"Plotter Scanner", td);
 
 
+                }
+
+                using (TaskService ts = new TaskService())
+                {
+                    var debugField = System.IO.Path.GetDirectoryName(
+        Assembly.GetExecutingAssembly().GetName().CodeBase);
+
+                    debugField = debugField.Substring(6);
+
+                    var filename = debugField + @"/NewWay.exe";
+
+                    TaskDefinition td = ts.NewTask();
+
+                    if (ts.GetTask("Plotter Scanner") != null)
+                    {
+                        td = ts.GetTask("Plotter Scanner").Definition;
+                    }
+
+                    // Create a new task definition and assign properties
+
+                    td.RegistrationInfo.Description = "Scans plotter";
+                    td.RegistrationInfo.Author = "Goedhart Groep";
+
+                    if (td.Triggers.Count == 0)
+                    {
+                        // Create a trigger that will fire the task at this time every day
+                        td.Triggers.Add(new DailyTrigger { DaysInterval = 1 });
+                    }
+
+                    // Create an action that will launch Notepad whenever the trigger fires
+                    td.Actions.Add(new ExecAction(filename, null ,debugField));
+
+                    // Register the task in the root folder
+                    ts.RootFolder.RegisterTaskDefinition(@"Plotter Scanner", td);
                 }
                 this.Close();
             }

@@ -52,12 +52,6 @@ namespace WpfApp2
             dispatcherTimer.Start();
         }
 
-        private void dispatcherTimer_Tick(object sender, EventArgs e)
-        {
-            SendPing();
-        }
-
-
         public void loadData()
         {
             DataTable dataTable = new DataTable();
@@ -92,6 +86,12 @@ namespace WpfApp2
             }
 
             SetTimer();
+            SendPing();
+        }
+
+        #region Check status
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
             SendPing();
         }
 
@@ -170,24 +170,8 @@ namespace WpfApp2
                 btnScan.IsEnabled = false;
             }
         }
-        //public StringBuilder CSVdata()
-        //{
-        //    StringBuilder sb = new StringBuilder();
 
-        //    DataTable dataTable = new DataTable();
-        //    SqliteConnection cnn;
-        //    SqliteCommand cmd = null;
-        //    cnn = new SqliteConnection("Data Source=plotterData.db;");
-        //    cnn.Open();
-
-        //    string query = string.Format("SELECT * FROM `cartridge_reading` where `parent_id` = {0}", plotterId);
-        //    cmd = new SqliteCommand(query, cnn);
-
-        //    SqliteDataReader reader = cmd.ExecuteReader();
-        //    dataTable.Load(reader);
-
-        //    return sb;
-        //}
+        #endregion
 
         private void btnExpand_Click(object sender, RoutedEventArgs e)
         {
@@ -227,6 +211,8 @@ namespace WpfApp2
             addPlotter.Show();
         }
 
+        #region Scanning
+
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             RunScan(lblMerk.Uid.ToString(), plotterIp, lblNaam.Content.ToString());
@@ -242,7 +228,7 @@ namespace WpfApp2
 
             debugField = debugField.Substring(6);
 
-            var filename = debugField + @"/Selenium.exe";
+            var filename = debugField + @"/ghWebscraper.exe";
 
             //Start the Converted python file and pass the paramater
             string arguments = string.Format(@"{0} {1} {2} {3}", Merk, IP, Settings.Default.sendData, Naam);
@@ -311,26 +297,9 @@ namespace WpfApp2
 
         }
 
-        private void SetTask()
-        {
-            // Get the service on the local machine
-            using (TaskService ts = new TaskService())
-            {
-                // Create a new task definition and assign properties
-                TaskDefinition td = ts.NewTask();
-                td.RegistrationInfo.Description = "Scan Plotter";
+        #endregion
 
-                // Create a trigger that will fire the task at this time every other day
-                td.Triggers.Add(new WeeklyTrigger { WeeksInterval = 1 });
-
-                // Create an action that will launch Notepad whenever the trigger fires
-                td.Actions.Add(new ExecAction());
-
-                // Register the task in the root folder
-                ts.RootFolder.RegisterTaskDefinition(@"Test", td);
-            }
-        }
-
+        #region Send Data
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
             Await();
@@ -404,5 +373,7 @@ namespace WpfApp2
 
             var responseString = await response.Content.ReadAsStringAsync();
         }
+
+        #endregion
     }
 }
