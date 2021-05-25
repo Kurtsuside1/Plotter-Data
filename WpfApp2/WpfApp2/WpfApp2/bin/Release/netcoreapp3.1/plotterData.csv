@@ -1,4 +1,11 @@
+<<<<<<< Updated upstream
 id,serial_number,model_id,meters_printed,datetime,naam,IP,bedrijfs_Naam,plotter_type
 6,CN61U7H02Q,1,52385.53 m²,2021-04-19 10:08:20.961339,SQLITE,10.0.0.48,,HP DesignJet
 7,BAJA04090,3,486.2 m2,2021-04-22 15:50:56.302069,TestplotterCanon,10.0.0.117,,Canon Tx3000
 8,MY79T8Q008,1,162024.45 m²,2021-05-10 12:01:33.126600,Tested,10.0.0.39,,HP DesignJet
+=======
+id,serial_number,model_id,meters_printed,datetime,naam,IP,plotter_type
+5,MY79T8Q008,1,159432.28 m²,2021-04-19 09:20:58.946863,Tested,10.0.0.39,HP
+6,CN61U7H02Q,1,52385.53 m²,2021-04-19 10:08:20.961339,SQLITE,10.0.0.48,HP
+7,BAJA04090,3,486.2 m2,2021-04-22 15:50:56.302069,TestplotterCanon,10.0.0.117,Canon Tx3000
+>>>>>>> Stashed changes
