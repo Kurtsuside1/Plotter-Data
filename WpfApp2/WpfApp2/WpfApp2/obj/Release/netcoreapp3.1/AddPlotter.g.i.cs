@@ -133,7 +133,7 @@ namespace WpfApp2 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/PlotterDataGH;component/addplotter.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/PlotterDataGH;V1.0.0.0;component/addplotter.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AddPlotter.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
