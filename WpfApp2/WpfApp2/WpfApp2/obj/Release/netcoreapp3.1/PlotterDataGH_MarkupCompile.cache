@@ -4,17 +4,25 @@
 winexe
 C#
 .cs
+<<<<<<< refs/remotes/origin/e
 <<<<<<< Updated upstream
 C:\Users\RproBr\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\
 =======
 E:\Gitzooi\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\
 >>>>>>> Stashed changes
+=======
+C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\
+>>>>>>> fe
 PlotterDataGH
 none
 false
 TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1;
+<<<<<<< refs/remotes/origin/e
 <<<<<<< Updated upstream
 C:\Users\RproBr\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\App.xaml
+=======
+C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\App.xaml
+>>>>>>> fe
 7788893747
 
 121882195201

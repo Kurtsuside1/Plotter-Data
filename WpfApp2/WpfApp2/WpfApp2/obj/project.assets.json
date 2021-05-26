@@ -3922,11 +3922,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\RproBr\\Source\\Repos\\Kurtsuside1\\Plotter-Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
+      "projectUniqueName": "C:\\Users\\RproBr\\Desktop\\Github\\Plotter Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
       "projectName": "PlotterDataGH",
-      "projectPath": "C:\\Users\\RproBr\\Source\\Repos\\Kurtsuside1\\Plotter-Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
+      "projectPath": "C:\\Users\\RproBr\\Desktop\\Github\\Plotter Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
       "packagesPath": "C:\\Users\\RproBr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\RproBr\\Source\\Repos\\Kurtsuside1\\Plotter-Data\\WpfApp2\\WpfApp2\\WpfApp2\\obj\\",
+      "outputPath": "C:\\Users\\RproBr\\Desktop\\Github\\Plotter Data\\WpfApp2\\WpfApp2\\WpfApp2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\RproBr\\AppData\\Roaming\\NuGet\\NuGet.Config",
