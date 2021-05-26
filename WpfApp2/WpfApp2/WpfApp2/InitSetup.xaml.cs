@@ -184,7 +184,7 @@ namespace WpfApp2
         async System.Threading.Tasks.Task Await()
         {
             //Send data to Goedhart Group
-            int timeout = 1000;
+            int timeout = 5000;
             var task = SendUserAsync(tbxBedrijfsnaam.Text, tbxContactpersoon.Text, tbxEmail.Text, tbxTelefoonnummer.Text);
             if (await System.Threading.Tasks.Task.WhenAny(task, System.Threading.Tasks.Task.Delay(timeout)) == task)
             {
@@ -211,10 +211,6 @@ namespace WpfApp2
             var content = new FormUrlEncodedContent(values);
 
             var response = await client.PostAsync("http://10.0.0.125/", content);
-
-            var responseString = await response.Content.ReadAsStringAsync();
-
-            MessageBox.Show(responseString);
         }
 
         bool IsValidEmail(string email)

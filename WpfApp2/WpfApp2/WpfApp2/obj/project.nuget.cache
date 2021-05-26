@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kKhqDLXiSSPVBjB2rZqtv5YlRKUEBT0dxr2YTLHs5nzTtZTcvNGOiZKydrg6okWLdL6Cxv2+NEnb+RZNpRTKdQ==",
+  "dgSpecHash": "vcTT6TmTFbbjVV4tddXd0EP+ATvbHkEjMCX7FG8LCFZc7ZlPrKQ+2X56YZMIWv0lVehX5ds8g/xQTE+jc6sWSg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\RproBr\\Source\\Repos\\Kurtsuside1\\Plotter-Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
+  "projectFilePath": "C:\\Users\\RproBr\\Desktop\\Github\\Plotter Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\RproBr\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\RproBr\\.nuget\\packages\\controlzex\\4.4.0\\controlzex.4.4.0.nupkg.sha512",
