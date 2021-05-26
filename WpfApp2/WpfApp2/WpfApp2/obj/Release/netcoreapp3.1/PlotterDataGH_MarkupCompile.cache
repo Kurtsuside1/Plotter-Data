@@ -4,16 +4,36 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\
+=======
+<<<<<<< Updated upstream
+C:\Users\RproBr\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\
+=======
+E:\Gitzooi\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\
+>>>>>>> Stashed changes
+>>>>>>> main
 PlotterDataGH
 none
 false
 TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1;
+<<<<<<< HEAD
 C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\App.xaml
+=======
+<<<<<<< Updated upstream
+C:\Users\RproBr\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\App.xaml
+>>>>>>> main
 7788893747
 
 121882195201
 2461622883705
+=======
+E:\Gitzooi\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\App.xaml
+7361134310
+
+141026966965
+245-1693392194
+>>>>>>> Stashed changes
 AddPlotter.xaml;cartridgeControl.xaml;InitSetup.xaml;MainWindow.xaml;plotterControl.xaml;SettingsPage.xaml;Themes\Generic.xaml;
 
 False

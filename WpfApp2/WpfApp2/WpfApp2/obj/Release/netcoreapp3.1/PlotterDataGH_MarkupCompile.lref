@@ -1,4 +1,5 @@
 ﻿
+<<<<<<< HEAD
 FC:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\App.xaml;;
 FC:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\AddPlotter.xaml;;
 FC:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\cartridgeControl.xaml;;
@@ -7,4 +8,25 @@ FC:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\MainWindow.
 FC:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\plotterControl.xaml;;
 FC:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\SettingsPage.xaml;;
 FC:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\Themes\Generic.xaml;;
+=======
+<<<<<<< Updated upstream
+FC:\Users\RproBr\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\App.xaml;;
+FC:\Users\RproBr\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\AddPlotter.xaml;;
+FC:\Users\RproBr\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\cartridgeControl.xaml;;
+FC:\Users\RproBr\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\InitSetup.xaml;;
+FC:\Users\RproBr\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\MainWindow.xaml;;
+FC:\Users\RproBr\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\plotterControl.xaml;;
+FC:\Users\RproBr\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\SettingsPage.xaml;;
+FC:\Users\RproBr\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\Themes\Generic.xaml;;
+=======
+FE:\Gitzooi\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\App.xaml;;
+FE:\Gitzooi\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\AddPlotter.xaml;;
+FE:\Gitzooi\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\cartridgeControl.xaml;;
+FE:\Gitzooi\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\InitSetup.xaml;;
+FE:\Gitzooi\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\MainWindow.xaml;;
+FE:\Gitzooi\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\plotterControl.xaml;;
+FE:\Gitzooi\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\SettingsPage.xaml;;
+FE:\Gitzooi\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\Themes\Generic.xaml;;
+>>>>>>> Stashed changes
+>>>>>>> main
 

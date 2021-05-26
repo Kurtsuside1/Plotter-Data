@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,6 +22,7 @@ namespace WpfApp2
     /// </summary>
     public partial class SettingsPage : Window
     {
+        private static readonly HttpClient client = new HttpClient();
         public SettingsPage()
         {
             InitializeComponent();
@@ -73,6 +75,31 @@ namespace WpfApp2
             this.Close();
             Settings.Default.editingAccount = false;
             Settings.Default.Save();
+        }
+
+
+        private async System.Threading.Tasks.Task btnSendData_ClickAsync()
+        {
+            var values = new Dictionary<string, string>
+            {
+                { "postType", "Plotter" },
+                { "serial_number", "CN61U7H02Q" },
+                { "model_id", "2" },
+                { "meters_printed", "52383.33 m²" },
+                { "naam", "SQLITE test" },
+                { "IP", "10.0.0.48" }
+            };
+
+            var content = new FormUrlEncodedContent(values);
+
+            var response = await client.PostAsync("http://localhost/Interface/", content);
+
+            var responseString = await response.Content.ReadAsStringAsync();
+        }
+
+        private void btnSendData_Click(object sender, RoutedEventArgs e)
+        {
+            btnSendData_ClickAsync();
         }
     }
 }
