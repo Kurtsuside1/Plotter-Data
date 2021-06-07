@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\RproBr\\Desktop\\Github\\Plotter Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj": {}
+    "E:\\Gitzooi\\Plotter-Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj": {}
   },
   "projects": {
-    "C:\\Users\\RproBr\\Desktop\\Github\\Plotter Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj": {
+    "E:\\Gitzooi\\Plotter-Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\RproBr\\Desktop\\Github\\Plotter Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
+        "projectUniqueName": "E:\\Gitzooi\\Plotter-Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
         "projectName": "PlotterDataGH",
-        "projectPath": "C:\\Users\\RproBr\\Desktop\\Github\\Plotter Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
-        "packagesPath": "C:\\Users\\RproBr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\RproBr\\Desktop\\Github\\Plotter Data\\WpfApp2\\WpfApp2\\WpfApp2\\obj\\",
+        "projectPath": "E:\\Gitzooi\\Plotter-Data\\WpfApp2\\WpfApp2\\WpfApp2\\PlotterDataGH.csproj",
+        "packagesPath": "C:\\Users\\kurtp\\.nuget\\packages\\",
+        "outputPath": "E:\\Gitzooi\\Plotter-Data\\WpfApp2\\WpfApp2\\WpfApp2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\RproBr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kurtp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -95,7 +95,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

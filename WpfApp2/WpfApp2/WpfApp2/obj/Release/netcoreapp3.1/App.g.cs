@@ -47,11 +47,7 @@ namespace WpfApp2 {
         /// InitializeComponent
         /// </summary>
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-<<<<<<< Updated upstream
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.6.0")]
-=======
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.1.0")]
->>>>>>> Stashed changes
         public void InitializeComponent() {
             if (_contentLoaded) {
                 return;
@@ -77,11 +73,7 @@ namespace WpfApp2 {
         /// </summary>
         [System.STAThreadAttribute()]
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-<<<<<<< Updated upstream
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.6.0")]
-=======
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.1.0")]
->>>>>>> Stashed changes
         public static void Main() {
             WpfApp2.App app = new WpfApp2.App();
             app.InitializeComponent();

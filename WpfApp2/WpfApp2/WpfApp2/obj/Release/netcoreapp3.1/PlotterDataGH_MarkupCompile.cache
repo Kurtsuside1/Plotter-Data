@@ -4,55 +4,16 @@
 winexe
 C#
 .cs
-<<<<<<< HEAD
-<<<<<<< refs/remotes/origin/e
-=======
-<<<<<<< HEAD
-C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\
-=======
->>>>>>> Rollback
-<<<<<<< Updated upstream
-C:\Users\RproBr\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\
-=======
 E:\Gitzooi\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\
->>>>>>> Stashed changes
-<<<<<<< HEAD
-=======
-C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\
->>>>>>> fe
-=======
->>>>>>> main
->>>>>>> Rollback
 PlotterDataGH
 none
 false
 TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1;
-<<<<<<< HEAD
-<<<<<<< refs/remotes/origin/e
-<<<<<<< Updated upstream
-C:\Users\RproBr\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\App.xaml
-=======
-C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\App.xaml
->>>>>>> fe
-=======
-<<<<<<< HEAD
-C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\App.xaml
-=======
-<<<<<<< Updated upstream
-C:\Users\RproBr\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\App.xaml
->>>>>>> main
->>>>>>> Rollback
-7788893747
-
-121882195201
-2461622883705
-=======
 E:\Gitzooi\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\App.xaml
 7361134310
 
-141026966965
-245-1693392194
->>>>>>> Stashed changes
+121807275803
+246504914537
 AddPlotter.xaml;cartridgeControl.xaml;InitSetup.xaml;MainWindow.xaml;plotterControl.xaml;SettingsPage.xaml;Themes\Generic.xaml;
 
 False
