@@ -4,29 +4,17 @@
 winexe
 C#
 .cs
-<<<<<<< Updated upstream
-C:\Users\RproBr\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\
-=======
-E:\Gitzooi\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\
->>>>>>> Stashed changes
+C:\Users\kurtp\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\
 PlotterDataGH
 none
 false
 TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1;
-<<<<<<< Updated upstream
-C:\Users\RproBr\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\App.xaml
-7788893747
+C:\Users\kurtp\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\App.xaml
+11645892668
 
-121882195201
-2461622883705
-=======
-E:\Gitzooi\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\App.xaml
-7361134310
+16440044293
+246504914537
+AddPlotter.xaml;cartridgeControl.xaml;InitSetup.xaml;MainWindow.xaml;NewMainScreen.xaml;plotterControl.xaml;SettingsPage.xaml;Themes\Generic.xaml;UsercontrolsMainScreen\overzichtInkt.xaml;UsercontrolsMainScreen\tabControl.xaml;UsercontrolsMainScreen\tellerStand.xaml;
 
-141026966965
-245-1693392194
->>>>>>> Stashed changes
-AddPlotter.xaml;cartridgeControl.xaml;InitSetup.xaml;MainWindow.xaml;plotterControl.xaml;SettingsPage.xaml;Themes\Generic.xaml;
-
-False
+True
 

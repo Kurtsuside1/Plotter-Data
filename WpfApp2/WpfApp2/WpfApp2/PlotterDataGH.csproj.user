@@ -19,10 +19,22 @@
     <Compile Update="InitSetup.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="NewMainScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="plotterControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="SettingsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UsercontrolsMainScreen\tabControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UsercontrolsMainScreen\overzichtInkt.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UsercontrolsMainScreen\tellerStand.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -44,13 +56,25 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="NewMainScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="plotterControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SettingsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UsercontrolsMainScreen\tabControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UsercontrolsMainScreen\overzichtInkt.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UsercontrolsMainScreen\tellerStand.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

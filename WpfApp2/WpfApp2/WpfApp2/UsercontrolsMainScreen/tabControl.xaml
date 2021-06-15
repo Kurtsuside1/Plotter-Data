@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="PlotterDataGH.tabControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:local="clr-namespace:PlotterDataGH"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="160">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0"  VerticalAlignment="Center">
+            <iconPacks:PackIconRadixIcons Kind="DotSolid" Width="10" Height="10" Foreground="Red"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Center">
+            <iconPacks:PackIconUnicons Kind="Apps" Width="20" Height="20" Foreground="Red" />
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="4" VerticalAlignment="Center">
+            <Label Name="lblTabName" Content="tabName" Foreground="Red" FontWeight="Bold"></Label>
+        </StackPanel>
+    </Grid>
+</UserControl>

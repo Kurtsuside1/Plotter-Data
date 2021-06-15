@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="PlotterDataGH.UsercontrolsMainScreen.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PlotterDataGH.UsercontrolsMainScreen"
+             mc:Ignorable="d" 
+             d:DesignHeight="280" d:DesignWidth="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60px"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="paddingLeft" Width="30px"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition x:Name="paddingRight" Width="30px"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.Column="1">
+            <Label Content="Overzicht inkt percentage" Foreground="Black" FontFamily="Roboto" FontSize="16" VerticalAlignment="Center"></Label>
+        </DockPanel>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40px"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="100%" FontFamily="Roboto" FontSize="10" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
+            <Label Grid.Row="1" Grid.Column="0" Content="75%" FontFamily="Roboto" FontSize="10" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
+            <Label Grid.Row="2" Grid.Column="0" Content="50%" FontFamily="Roboto" FontSize="10" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
+            <Label Grid.Row="3" Grid.Column="0" Content="25%" FontFamily="Roboto" FontSize="10" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
+            <Label Grid.Row="4" Grid.Column="0" Content="0%" FontFamily="Roboto" FontSize="10" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
+
+            <Line Grid.Row="0" Grid.Column="1" Height="1" VerticalAlignment="Center" Fill="Black"/>
+            <Line Grid.Row="1" Grid.Column="1" Height="1" VerticalAlignment="Center" Fill="Black"/>
+            <Line Grid.Row="2" Grid.Column="1" Height="1" VerticalAlignment="Center" Fill="Black"/>
+            <Line Grid.Row="3" Grid.Column="1" Height="1" VerticalAlignment="Center" Fill="Black"/>
+            <Line Grid.Row="4" Grid.Column="1" Height="1" VerticalAlignment="Center" Fill="Black"/>
+        </Grid>
+    </Grid>
+</UserControl>
