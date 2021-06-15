@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using MahApps.Metro.Controls;
+using PlotterDataGH.Properties;
+using System.IO;
+using Microsoft.Data.Sqlite;
+using SendFileTo;
+using System.Reflection;
+using Microsoft.Win32.TaskScheduler;
 
 namespace PlotterDataGH
 {
@@ -17,9 +22,106 @@ namespace PlotterDataGH
     /// </summary>
     public partial class NewMainScreen : Window
     {
+        DataTable dataTable = new DataTable();
         public NewMainScreen()
         {
             InitializeComponent();
+            WindowState oldstate = WindowState;
+            WindowState = WindowState.Maximized;
+            Visibility = Visibility.Collapsed;
+            //WindowStyle = WindowStyle.None;
+            //ResizeMode = ResizeMode.NoResize;
+            Visibility = Visibility.Visible;
+            Activate();
+
+            LoadData();
+        }
+
+        //Load the data from the local database file
+        public void LoadData()
+        {
+            dataTable.Clear();
+            SqliteConnection cnn;
+            SqliteCommand cmd = null;
+            cnn = new SqliteConnection("Data Source=plotterData.db;");
+            cnn.Open();
+
+            string query = "SELECT m1.*, models.plotter_type FROM printer_data m1 LEFT JOIN printer_data m2 ON (m1.serial_number = m2.serial_number AND m1.id < m2.id) INNER JOIN models on models.id = m1.model_id WHERE m2.id IS NULL";
+            cmd = new SqliteCommand(query, cnn);
+
+            SqliteDataReader reader = cmd.ExecuteReader();
+            dataTable.Load(reader);
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                RowDefinition rd = new RowDefinition();
+                rd.Height = GridLength.Auto;
+                tabControlGrid.RowDefinitions.Add(rd);
+
+                tabControl tc = new tabControl();
+
+                tc.lblTabName.Content = string.Format(row["naam"].ToString());
+                tc.plotterId = Convert.ToInt32(row["id"]);
+                tc.ParentForm = this;
+                //tc.loadData();
+
+
+                tabControlGrid.Children.Add(tc);
+                Grid.SetRow(tc, tabControlGrid.RowDefinitions.Count - 1);
+            }
+
+            //Create a CSV file for mailing
+            try
+            {
+                StringBuilder sb = new StringBuilder();
+
+                IEnumerable<string> columnNames = dataTable.Columns.Cast<DataColumn>().
+                                                  Select(column => column.ColumnName);
+                sb.AppendLine(string.Join(",", columnNames));
+
+
+
+                DataTable cartridgeTable = new DataTable();
+
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    IEnumerable<string> fields = row.ItemArray.Select(field => field.ToString());
+                    sb.AppendLine(string.Join(",", fields));
+
+                    SqliteConnection cnn1;
+                    SqliteCommand cmd1 = null;
+                    cnn1 = new SqliteConnection("Data Source=plotterData.db;");
+                    cnn1.Open();
+
+                    string query1 = string.Format("SELECT * FROM `cartridge_reading` where `parent_id` = {0}", row[0]);
+                    cmd1 = new SqliteCommand(query1, cnn1);
+
+                    SqliteDataReader reader1 = cmd1.ExecuteReader();
+
+                    cartridgeTable.Load(reader1);
+                }
+
+                File.WriteAllText("plotterData.csv", sb.ToString());
+
+                StringBuilder sb1 = new StringBuilder();
+
+                IEnumerable<string> columnNames1 = cartridgeTable.Columns.Cast<DataColumn>().
+                                                  Select(column => column.ColumnName);
+                sb1.AppendLine(string.Join(",", columnNames1));
+
+                foreach (DataRow row1 in cartridgeTable.Rows)
+                {
+                    IEnumerable<string> fields = row1.ItemArray.Select(field => field.ToString());
+                    sb1.AppendLine(string.Join(",", fields));
+                }
+
+                File.WriteAllText("cartridgeData.csv", sb1.ToString());
+            }
+            catch (System.IO.IOException)
+            {
+                MessageBox.Show("Please close Excel");
+            }
+
         }
     }
 }

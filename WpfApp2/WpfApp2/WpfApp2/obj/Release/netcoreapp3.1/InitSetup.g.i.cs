@@ -192,7 +192,7 @@ namespace WpfApp2 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/PlotterDataGH;V1.0.0.0;component/initsetup.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/PlotterDataGH;component/initsetup.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\InitSetup.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

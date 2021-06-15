@@ -54,12 +54,20 @@ namespace WpfApp2
 
                 if (dataTable.Rows.Count == 1)
                 {
-                    MainWindow mw = new MainWindow();
+                    NewMainScreen mw = new NewMainScreen();
                     Settings.Default.bedrijfsNaam = dataTable.Rows[0]["bedrijfs_Naam"].ToString();
                     Settings.Default.Save();
                     mw.Show();
                     MessageBox.Show("Hallo " + dataTable.Rows[0]["bedrijfs_Naam"]);
                     this.Close();
+
+                    //Old Screen
+                    //MainWindow mw = new MainWindow();
+                    //Settings.Default.bedrijfsNaam = dataTable.Rows[0]["bedrijfs_Naam"].ToString();
+                    //Settings.Default.Save();
+                    //mw.Show();
+                    //MessageBox.Show("Hallo " + dataTable.Rows[0]["bedrijfs_Naam"]);
+                    //this.Close();
                 }
 
                 cbxSendData.IsChecked = false;

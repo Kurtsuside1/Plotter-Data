@@ -46,9 +46,25 @@
             </Grid>
         </StackPanel>
 
-        <Grid Grid.Row="1" Grid.Column="1" Name="tabControlGrid">
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="1" Name="tabControlGrid">
+                <Grid.RowDefinitions>
 
+                </Grid.RowDefinitions>
+            </Grid>
         </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Name="MainGrid">
+            <Grid.RowDefinitions>
+
+            </Grid.RowDefinitions>
+        </Grid>
+
 
         <DockPanel Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
             <iconPacks:PackIconBoxIcons Kind="RegularLogOut" VerticalAlignment="Center" Foreground="Red"/>

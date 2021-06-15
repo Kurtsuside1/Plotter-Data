@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\kurtp\Source\Repos\Kurtsuside1\Plotter-Data\WpfApp2\WpfApp2\WpfApp2\App.xaml
-11645892668
+12-500372629
 
-16440044293
+17938193720
 246504914537
-AddPlotter.xaml;cartridgeControl.xaml;InitSetup.xaml;MainWindow.xaml;NewMainScreen.xaml;plotterControl.xaml;SettingsPage.xaml;Themes\Generic.xaml;UsercontrolsMainScreen\overzichtInkt.xaml;UsercontrolsMainScreen\tabControl.xaml;UsercontrolsMainScreen\tellerStand.xaml;
+AddPlotter.xaml;cartridgeControl.xaml;InitSetup.xaml;MainWindow.xaml;NewMainScreen.xaml;plotterControl.xaml;SettingsPage.xaml;Themes\Generic.xaml;UsercontrolsMainScreen\graphCollumn.xaml;UsercontrolsMainScreen\overzichtInkt.xaml;UsercontrolsMainScreen\tabControl.xaml;UsercontrolsMainScreen\tellerStand.xaml;
 
 True
 

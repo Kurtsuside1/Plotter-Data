@@ -28,6 +28,9 @@
     <Compile Update="SettingsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UsercontrolsMainScreen\graphCollumn.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UsercontrolsMainScreen\tabControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -63,6 +66,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SettingsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UsercontrolsMainScreen\graphCollumn.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UsercontrolsMainScreen\tabControl.xaml">
