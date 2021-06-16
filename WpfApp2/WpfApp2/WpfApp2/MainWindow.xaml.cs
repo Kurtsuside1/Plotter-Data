@@ -138,7 +138,7 @@ namespace WpfApp2
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddPlotter addPlotter = new AddPlotter();
-            addPlotter.ParentForm = this;
+            //addPlotter.ParentForm = this;
             addPlotter.Show();
         }
 

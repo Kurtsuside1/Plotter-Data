@@ -21,7 +21,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ProgressBar}">
                         <Grid x:Name="Root">
-                            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="20"/>
+                            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="15"/>
                             <Rectangle x:Name="PART_Track" />
                             <Grid x:Name="PART_Indicator" ClipToBounds="true" HorizontalAlignment="Left">
                                 <Rectangle x:Name="Indicator" Fill="{TemplateBinding Foreground}" RadiusX="20" RadiusY="20"/>
@@ -57,6 +57,10 @@
             <RowDefinition Height="30px"/>
             <RowDefinition Height="30px"/>
         </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100px"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
         <Label Grid.Row="1" Content="InkName" x:Name="lblInkName" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Label Grid.Row="2" Content="InkPerc" x:Name="lblInkPerc" HorizontalAlignment="Center" VerticalAlignment="Center"/>

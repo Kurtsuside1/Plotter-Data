@@ -5,11 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlotterDataGH.UsercontrolsMainScreen"
              mc:Ignorable="d" 
-             d:DesignHeight="280" d:DesignWidth="500">
+             d:DesignHeight="200" d:DesignWidth="300" MinHeight="200">
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="60px"></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition Height="1"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -52,9 +54,11 @@
 
             <Grid Name="graphGrid" Grid.Column="1" Grid.RowSpan="6">
                 <Grid.ColumnDefinitions>
-                    
+
                 </Grid.ColumnDefinitions>
             </Grid>
         </Grid>
+
+        <Rectangle Grid.ColumnSpan="3" Grid.Row="2" RadiusY="1"  Stroke="#FFC5C5C5"></Rectangle>
     </Grid>
 </UserControl>

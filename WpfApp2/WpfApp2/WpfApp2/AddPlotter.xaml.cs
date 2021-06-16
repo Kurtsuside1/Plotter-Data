@@ -29,7 +29,7 @@ namespace WpfApp2
         int plotterId = 0;
         string serialNumber = "";
 
-        public MainWindow ParentForm { get; set; }
+        public NewMainScreen ParentForm { get; set; }
 
         public AddPlotter()
         {
@@ -270,10 +270,10 @@ Assembly.GetExecutingAssembly().GetName().CodeBase);
                     }
                 }
 
-                ParentForm.fillerGrid.RowDefinitions.Clear();
-                ParentForm.fillerGrid.Children.Clear();
+                //ParentForm.fillerGrid.RowDefinitions.Clear();
+                //ParentForm.fillerGrid.Children.Clear();
                 ParentForm.LoadData();
-                ParentForm.TaskCreater();
+                //ParentForm.TaskCreater();
 
                 this.Close();
 

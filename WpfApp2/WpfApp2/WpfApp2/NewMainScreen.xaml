@@ -32,17 +32,25 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition Width="10px"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="10px"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="2" Orientation="Horizontal" Height="40px" Width="40px">
                 <Image Source="Pictures/nl.png"></Image>
                 </StackPanel>
-                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
                     <iconPacks:PackIconUnicons 
                                       Width="40px"
                                       Height="40px"
                                       Kind="User"/>
                 </StackPanel>
+                <Button x:Name="btnAddPlotter" Grid.Column="4" BorderBrush="{x:Null}" Click="btnAddPlotter_Click" Background="{x:Null}" Foreground="Black">
+                    <iconPacks:PackIconPicolIcons 
+                                      Width="40px"
+                                      Height="40px"
+                                      Kind="PrinterAdd" />
+                </Button>
             </Grid>
         </StackPanel>
 
@@ -60,6 +68,32 @@
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Name="MainGrid">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0" Name="MainGridOverzicht">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                </Grid>
+
+                <Grid Grid.Column="1" Name="tellertstandGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                </Grid>
+            </Grid>
             <Grid.RowDefinitions>
 
             </Grid.RowDefinitions>

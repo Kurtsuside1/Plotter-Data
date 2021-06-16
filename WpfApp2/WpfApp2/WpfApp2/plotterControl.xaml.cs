@@ -209,7 +209,7 @@ namespace WpfApp2
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             AddPlotter addPlotter = new AddPlotter();
-            addPlotter.ParentForm = ParentForm;
+            //addPlotter.ParentForm = ParentForm;
             addPlotter.editForm(plotterId);
             addPlotter.editingMode = true;
             addPlotter.Show();

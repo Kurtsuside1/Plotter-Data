@@ -18,14 +18,14 @@
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="0"  VerticalAlignment="Center">
-            <iconPacks:PackIconRadixIcons Kind="DotSolid" Width="10" Height="10" Foreground="Red"/>
+        <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
+            <iconPacks:PackIconRadixIcons Kind="DotSolid" Name="DotOne" Width="10" Height="10" Foreground="Black"/>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Center">
-            <iconPacks:PackIconUnicons Kind="Apps" Width="20" Height="20" Foreground="Red" />
+            <iconPacks:PackIconUnicons Kind="Apps" Name="DotTwo" Width="20" Height="20" Foreground="Black" />
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="4" VerticalAlignment="Center">
-            <Label Name="lblTabName" Content="tabName" Foreground="Red" FontWeight="Bold"></Label>
+            <Label Name="lblTabName" Content="tabName" Foreground="Black" FontWeight="Bold"></Label>
         </StackPanel>
     </Grid>
 </UserControl>

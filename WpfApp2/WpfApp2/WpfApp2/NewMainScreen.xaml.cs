@@ -14,6 +14,7 @@ using Microsoft.Data.Sqlite;
 using SendFileTo;
 using System.Reflection;
 using Microsoft.Win32.TaskScheduler;
+using WpfApp2;
 
 namespace PlotterDataGH
 {
@@ -63,8 +64,8 @@ namespace PlotterDataGH
                 tc.lblTabName.Content = string.Format(row["naam"].ToString());
                 tc.plotterId = Convert.ToInt32(row["id"]);
                 tc.ParentForm = this;
+                tc.meterstand = string.Format(row["meters_printed"].ToString());
                 //tc.loadData();
-
 
                 tabControlGrid.Children.Add(tc);
                 Grid.SetRow(tc, tabControlGrid.RowDefinitions.Count - 1);
@@ -123,5 +124,88 @@ namespace PlotterDataGH
             }
 
         }
+
+        private void btnAddPlotter_Click(object sender, RoutedEventArgs e)
+        {
+            AddPlotter addPlotter = new AddPlotter();
+            addPlotter.ParentForm = this;
+            addPlotter.Show();
+        }
+
+
+        #region Scanning
+        public void RunScan(string Merk, string IP, string Naam)
+        {
+            var debugField = System.IO.Path.GetDirectoryName(
+    Assembly.GetExecutingAssembly().GetName().CodeBase);
+
+            debugField = debugField.Substring(6);
+
+            var filename = debugField + @"/ghWebscraper.exe";
+
+            //Start the Converted python file and pass the paramater
+            string arguments = string.Format(@"{0} {1} {2} {3}", Merk, IP, Settings.Default.bedrijfsNaam, Naam);
+
+            //Process myProcess = new Process();
+            //myProcess.Exited += new EventHandler(myProcess_Exited);
+            //myProcess.StartInfo.FileName = filename;
+            //myProcess.StartInfo.Arguments = arguments;
+            //myProcess.Start();
+
+            doStuff(filename, arguments);
+        }
+
+        async System.Threading.Tasks.Task doStuff(string fileName, string args)
+        {
+            //DisableWhileScanning();
+            await RunProcessAsync(fileName, args);
+
+            //MahApps.Metro.IconPacks.PackIconFontAwesome fe = btnScan.Content as MahApps.Metro.IconPacks.PackIconFontAwesome;
+            //fe.Kind = MahApps.Metro.IconPacks.PackIconFontAwesomeKind.BinocularsSolid;
+            //btnScan.IsEnabled = true;
+
+            LoadData();
+        }
+
+        public static async Task<int> RunProcessAsync(string fileName, string args)
+        {
+            using (var process = new Process
+            {
+                StartInfo =
+        {
+            FileName = fileName, Arguments = args,
+            UseShellExecute = false, CreateNoWindow = true,
+            RedirectStandardOutput = true, RedirectStandardError = true
+        },
+                EnableRaisingEvents = true
+            })
+            {
+                return await RunProcessAsync(process).ConfigureAwait(false);
+            }
+        }
+        private static Task<int> RunProcessAsync(Process process)
+        {
+            var tcs = new TaskCompletionSource<int>();
+
+            process.Exited += (s, ea) => tcs.SetResult(process.ExitCode);
+            process.OutputDataReceived += (s, ea) => Console.WriteLine(ea.Data);
+            process.ErrorDataReceived += (s, ea) => Console.WriteLine("ERR: " + ea.Data);
+
+            bool started = process.Start();
+            if (!started)
+            {
+                //you may allow for the process to be re-used (started = false) 
+                //but I'm not sure about the guarantees of the Exited event in such a case
+                throw new InvalidOperationException("Could not start process: " + process);
+            }
+
+            process.BeginOutputReadLine();
+            process.BeginErrorReadLine();
+
+            return tcs.Task;
+
+        }
+
+        #endregion
     }
 }

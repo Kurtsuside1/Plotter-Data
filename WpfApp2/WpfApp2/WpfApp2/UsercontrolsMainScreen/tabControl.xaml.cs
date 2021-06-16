@@ -32,6 +32,7 @@ namespace PlotterDataGH
         public int plotterId;
         public string plotterIp;
         public string serialnm;
+        public string meterstand;
         AutoResetEvent waiter = new AutoResetEvent(false);
 
         private static readonly HttpClient client = new HttpClient();
@@ -57,27 +58,46 @@ namespace PlotterDataGH
             SqliteDataReader reader = cmd.ExecuteReader();
             dataTable.Load(reader);
 
-            ColumnDefinition cd = new ColumnDefinition();
-            cd.Width = GridLength.Auto;
-            ParentForm.MainGrid.ColumnDefinitions.Add(cd);
-
             overzichtInkt InktOverzicht = new overzichtInkt();
 
             InktOverzicht.plotterId = plotterId;
             InktOverzicht.loadData();
 
-            ParentForm.MainGrid.Children.Add(InktOverzicht);
-            Grid.SetColumn(InktOverzicht, ParentForm.MainGrid.ColumnDefinitions.Count - 1);
-            ColumnDefinition last = new ColumnDefinition();
-            ParentForm.MainGrid.ColumnDefinitions.Add(last);
+            ParentForm.MainGridOverzicht.Children.Add(InktOverzicht);
+            Grid.SetColumn(InktOverzicht, 0);
+            Grid.SetRow(InktOverzicht, 1);
+
+            tellerStand tellerstand = new tellerStand();
+
+            tellerstand.lblTellerstand.Content = meterstand;
+
+            ParentForm.tellertstandGrid.Children.Add(tellerstand);
+            Grid.SetColumn(tellerstand, 0);
+            Grid.SetRow(tellerstand, 1);
 
             //SetTimer();
             //SendPing();
         }
 
+        public void clear_screen()
+        {
+            //if (ParentForm.MainGridOverzicht.ColumnDefinitions.Count >= 1)
+            //{
+            //    ParentForm.MainGridOverzicht.ColumnDefinitions.RemoveRange(0, ParentForm.MainGridOverzicht.ColumnDefinitions.Count);
+            //}
+
+            ParentForm.MainGridOverzicht.Children.Clear();
+            ParentForm.tellertstandGrid.Children.Clear();
+        }
+
         private void Grid_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            loadData();
+            DotOne.Foreground = new SolidColorBrush(Colors.Red);
+            DotTwo.Foreground = new SolidColorBrush(Colors.Red);
+            lblTabName.Foreground = new SolidColorBrush(Colors.Red);
+
+            clear_screen();
+            loadData(); 
         }
     }
 }
