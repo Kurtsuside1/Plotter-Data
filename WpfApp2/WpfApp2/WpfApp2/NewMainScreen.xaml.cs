@@ -207,5 +207,12 @@ namespace PlotterDataGH
         }
 
         #endregion
+
+        private void btnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsPage sp = new SettingsPage();
+            sp.Show();
+            this.Close();
+        }
     }
 }

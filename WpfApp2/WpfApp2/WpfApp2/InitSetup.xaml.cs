@@ -139,7 +139,7 @@ namespace WpfApp2
 
                     Settings.Default.Save();
 
-                    MainWindow mw = new MainWindow();
+                    NewMainScreen mw = new NewMainScreen();
                     mw.Show();
                     this.Close();
                 }

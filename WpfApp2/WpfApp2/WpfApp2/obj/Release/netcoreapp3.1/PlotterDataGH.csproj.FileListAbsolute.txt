@@ -282,3 +282,5 @@ C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\
 C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\PlotterDataGH.dll
 C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\PlotterDataGH.pdb
 C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\PlotterDataGH.genruntimeconfig.cache
+C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\UsercontrolsMainScreen\Controls.g.cs
+C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\UsercontrolsMainScreen\Controls.baml

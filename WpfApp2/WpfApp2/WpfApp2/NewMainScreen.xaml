@@ -10,7 +10,7 @@
         Title="NewMainScreen" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60px"></RowDefinition>
+            <RowDefinition Height="100px"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="40px"></RowDefinition>
         </Grid.RowDefinitions>
@@ -22,7 +22,7 @@
             <ColumnDefinition Width="20px"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Horizontal" Height="40px" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
+        <StackPanel Orientation="Horizontal" Height="80px" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
             <Image Source="Pictures/logo.png"></Image>
         </StackPanel>
 
@@ -36,15 +36,15 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="2" Orientation="Horizontal" Height="40px" Width="40px">
+                <!--<StackPanel Grid.Column="2" Orientation="Horizontal" Height="40px" Width="40px">
                 <Image Source="Pictures/nl.png"></Image>
-                </StackPanel>
-                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                </StackPanel>-->
+                <Button Name="btnSettings" Grid.Column="0" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Background="{x:Null}" Click="btnSettings_Click">
                     <iconPacks:PackIconUnicons 
                                       Width="40px"
                                       Height="40px"
                                       Kind="User"/>
-                </StackPanel>
+                </Button>
                 <Button x:Name="btnAddPlotter" Grid.Column="4" BorderBrush="{x:Null}" Click="btnAddPlotter_Click" Background="{x:Null}" Foreground="Black">
                     <iconPacks:PackIconPicolIcons 
                                       Width="40px"
@@ -100,9 +100,9 @@
         </Grid>
 
 
-        <DockPanel Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+        <!--<DockPanel Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
             <iconPacks:PackIconBoxIcons Kind="RegularLogOut" VerticalAlignment="Center" Foreground="Red"/>
             <Label Content="Uitloggen"></Label>
-        </DockPanel>
+        </DockPanel>-->
     </Grid>
 </Window>

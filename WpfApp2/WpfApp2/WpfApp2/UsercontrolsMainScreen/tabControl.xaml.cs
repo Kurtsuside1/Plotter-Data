@@ -75,6 +75,12 @@ namespace PlotterDataGH
             Grid.SetColumn(tellerstand, 0);
             Grid.SetRow(tellerstand, 1);
 
+            Controls controllers = new Controls();
+
+            ParentForm.tellertstandGrid.Children.Add(controllers);
+            Grid.SetColumn(controllers, 0);
+            Grid.SetRow(controllers, 0);
+
             //SetTimer();
             //SendPing();
         }
