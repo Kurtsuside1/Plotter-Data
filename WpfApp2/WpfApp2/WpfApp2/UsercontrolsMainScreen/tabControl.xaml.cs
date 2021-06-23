@@ -33,6 +33,8 @@ namespace PlotterDataGH
         public string plotterIp;
         public string serialnm;
         public string meterstand;
+        public int typeId;
+        public DateTime latestScan;
         AutoResetEvent waiter = new AutoResetEvent(false);
 
         private static readonly HttpClient client = new HttpClient();
@@ -77,9 +79,21 @@ namespace PlotterDataGH
 
             Controls controllers = new Controls();
 
-            ParentForm.tellertstandGrid.Children.Add(controllers);
+            controllers.plotterId = plotterId;
+            controllers.plotterNaam = lblTabName.Content.ToString();
+            controllers.typeId = typeId;
+            controllers.plotterIp = plotterIp;
+            controllers.ParentForm = ParentForm;
+            controllers.tabForm = this;
+            controllers.lblLatestScanDate.Content = latestScan.ToString();
+
+            ParentForm.statusGrid.Children.Add(controllers);
             Grid.SetColumn(controllers, 0);
             Grid.SetRow(controllers, 0);
+            //Grid.SetColumnSpan(controllers, 2);
+
+            controllers.SendPing();
+            controllers.SetTimer();
 
             //SetTimer();
             //SendPing();
@@ -94,10 +108,13 @@ namespace PlotterDataGH
 
             ParentForm.MainGridOverzicht.Children.Clear();
             ParentForm.tellertstandGrid.Children.Clear();
+            ParentForm.statusGrid.Children.Clear();
         }
 
         private void Grid_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            ParentForm.blackenTabs();
+
             DotOne.Foreground = new SolidColorBrush(Colors.Red);
             DotTwo.Foreground = new SolidColorBrush(Colors.Red);
             lblTabName.Foreground = new SolidColorBrush(Colors.Red);

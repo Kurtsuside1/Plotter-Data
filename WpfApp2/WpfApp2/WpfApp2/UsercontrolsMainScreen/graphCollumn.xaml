@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:PlotterDataGH.UsercontrolsMainScreen"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="PlotterDataGH.UsercontrolsMainScreen.graphCollumn"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="100">
+             >
     <UserControl.Resources>
         <Style x:Key="ProgressBarStyle1" TargetType="{x:Type ProgressBar}">
             <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Gray5}"/>

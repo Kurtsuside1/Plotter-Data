@@ -15,6 +15,7 @@ using SendFileTo;
 using System.Reflection;
 using Microsoft.Win32.TaskScheduler;
 using WpfApp2;
+using System.Windows.Media;
 
 namespace PlotterDataGH
 {
@@ -24,6 +25,9 @@ namespace PlotterDataGH
     public partial class NewMainScreen : Window
     {
         DataTable dataTable = new DataTable();
+
+        int countTabs = 0;
+
         public NewMainScreen()
         {
             InitializeComponent();
@@ -63,12 +67,25 @@ namespace PlotterDataGH
 
                 tc.lblTabName.Content = string.Format(row["naam"].ToString());
                 tc.plotterId = Convert.ToInt32(row["id"]);
+                tc.plotterIp = row["ip"].ToString();
                 tc.ParentForm = this;
                 tc.meterstand = string.Format(row["meters_printed"].ToString());
+                tc.typeId = Convert.ToInt32(row["model_id"]);
+                tc.latestScan = Convert.ToDateTime(row["datetime"]);
                 //tc.loadData();
+
+                if(countTabs == 0)
+                {
+                    tc.lblTabName.Foreground = new SolidColorBrush(Colors.Red);
+                    tc.DotOne.Foreground = new SolidColorBrush(Colors.Red);
+                    tc.DotTwo.Foreground = new SolidColorBrush(Colors.Red);
+
+                    tc.loadData();
+                }
 
                 tabControlGrid.Children.Add(tc);
                 Grid.SetRow(tc, tabControlGrid.RowDefinitions.Count - 1);
+                countTabs++;
             }
 
             //Create a CSV file for mailing
@@ -132,6 +149,11 @@ namespace PlotterDataGH
             addPlotter.Show();
         }
 
+        public void clearTabs()
+        {
+            tabControlGrid.Children.Clear();
+            countTabs = 0;
+        }
 
         #region Scanning
         public void RunScan(string Merk, string IP, string Naam)
@@ -183,6 +205,7 @@ namespace PlotterDataGH
                 return await RunProcessAsync(process).ConfigureAwait(false);
             }
         }
+
         private static Task<int> RunProcessAsync(Process process)
         {
             var tcs = new TaskCompletionSource<int>();
@@ -207,6 +230,16 @@ namespace PlotterDataGH
         }
 
         #endregion
+
+        public void blackenTabs()
+        {
+            foreach(tabControl tabControl in tabControlGrid.Children)
+            {
+                tabControl.lblTabName.Foreground = new SolidColorBrush(Colors.Black);
+                tabControl.DotOne.Foreground = new SolidColorBrush(Colors.Black);
+                tabControl.DotTwo.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
 
         private void btnSettings_Click(object sender, RoutedEventArgs e)
         {

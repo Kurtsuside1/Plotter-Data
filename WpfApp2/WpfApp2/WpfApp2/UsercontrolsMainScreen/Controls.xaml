@@ -6,28 +6,31 @@
              xmlns:local="clr-namespace:PlotterDataGH.UsercontrolsMainScreen"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="700">
+             d:DesignHeight="50" d:DesignWidth="700"
+             HorizontalAlignment="Stretch">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30"></ColumnDefinition>
-            <ColumnDefinition Width="50"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="40"></ColumnDefinition>
-            <ColumnDefinition Width="40"></ColumnDefinition>
-            <ColumnDefinition Width="40"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             
         </Grid.RowDefinitions>
         <Ellipse x:Name="ellStatus" Grid.Column="0" HorizontalAlignment="Left" Height="24" Stroke="Black" VerticalAlignment="Center" Width="24" Fill="Red"/>
-        <Label Grid.Column="1" Content="Status:" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
-        <Button Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click">
+        <Label Name="lblstatus" Grid.Column="1" Content="Status: Offline" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
+        <Label Grid.Column="3" Name="lblLatestScanDate" Content="Datum" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
+        <Button Grid.Column="6" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click">
             <iconPacks:PackIconForkAwesome Kind="Cog" />
         </Button>
-        <Button x:Name="btnSend" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="btnSend_Click">
+        <Button x:Name="btnSend" Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="btnSend_Click">
             <iconPacks:PackIconFontAwesome Kind="TelegramPlaneBrands" />
         </Button>
-        <Button x:Name="btnScan" Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click_1">
+        <Button x:Name="btnScan" Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click_1">
             <iconPacks:PackIconFontAwesome Kind="BinocularsSolid" />
         </Button>
     </Grid>
