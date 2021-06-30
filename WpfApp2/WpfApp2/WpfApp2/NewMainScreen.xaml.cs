@@ -340,5 +340,64 @@ namespace PlotterDataGH
             sp.Show();
             this.Close();
         }
+
+        private void btnMail_Click(object sender, RoutedEventArgs e)
+        {
+            MAPI mapi = new MAPI();
+
+            mapi.AddRecipientTo("Helpdesk@goedhart-its.com");
+            mapi.AddAttachment(Environment.CurrentDirectory + "\\plotterData.csv");
+            mapi.AddAttachment(Environment.CurrentDirectory + "\\cartridgeData.csv");
+            mapi.SendMailPopup("Mail Plotter Data", getMailData());
+        }
+
+        private string getMailData()
+        {
+            dataTable.Clear();
+            SqliteConnection cnn;
+            SqliteCommand cmd = null;
+            cnn = new SqliteConnection("Data Source=plotterData.db;");
+            cnn.Open();
+
+            string query = "SELECT m1.*, models.plotter_type FROM printer_data m1 LEFT JOIN printer_data m2 ON (m1.serial_number = m2.serial_number AND m1.id < m2.id) INNER JOIN models on models.id = m1.model_id WHERE m2.id IS NULL";
+            cmd = new SqliteCommand(query, cnn);
+
+            string mailBody = "";
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                mailBody += "Plotters: \n";
+                mailBody += string.Format(row["serial_number"].ToString());
+                mailBody += "\n";
+                mailBody += string.Format(row["meters_printed"].ToString());
+                mailBody += "\n";
+                mailBody += string.Format(row["plotter_type"].ToString());
+                mailBody += "\n";
+                mailBody += "\n";
+                mailBody += "Cartridges: \n";
+
+
+                DataTable dataTableCartridge = new DataTable();
+                SqliteCommand cmd1 = null;
+
+                string query1 = string.Format("SELECT * FROM `cartridge_reading` where `parent_id` = {0}", row["id"]);
+                cmd1 = new SqliteCommand(query1, cnn);
+
+                SqliteDataReader reader1 = cmd1.ExecuteReader();
+                dataTableCartridge.Load(reader1);
+
+                foreach (DataRow rowCartridge in dataTableCartridge.Rows)
+                {
+                    mailBody += string.Format(rowCartridge["cartridge_model"].ToString());
+                    mailBody += "\n";
+                    mailBody += string.Format(rowCartridge["volume"].ToString());
+                    mailBody += "\n";
+                    mailBody += "\n";
+                }
+
+            }
+
+            return mailBody;
+        }
     }
 }

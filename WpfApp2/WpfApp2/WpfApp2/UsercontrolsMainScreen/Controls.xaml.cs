@@ -188,7 +188,7 @@ namespace PlotterDataGH.UsercontrolsMainScreen
 
             var content = new FormUrlEncodedContent(values);
 
-            var response = await client.PostAsync("http://10.0.200.2/", content);
+            var response = await client.PostAsync("http://5.206.213.147/", content);
 
             var responseString = await response.Content.ReadAsStringAsync();
 
@@ -223,7 +223,7 @@ namespace PlotterDataGH.UsercontrolsMainScreen
 
             var content = new FormUrlEncodedContent(values);
 
-            var response = await client.PostAsync("http://10.0.200.2/", content);
+            var response = await client.PostAsync("http://5.206.213.147/", content);
 
             var responseString = await response.Content.ReadAsStringAsync();
         }

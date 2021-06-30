@@ -34,6 +34,8 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition Width="10px"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="10px"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
                 <!--<StackPanel Grid.Column="2" Orientation="Horizontal" Height="40px" Width="40px">
@@ -44,6 +46,12 @@
                                       Width="40px"
                                       Height="40px"
                                       Kind="User"/>
+                </Button>                
+                <Button Name="btnMail" Grid.Column="6" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Background="{x:Null}" Click="btnMail_Click">
+                    <iconPacks:PackIconMaterial Kind="EmailSendOutline"
+                                                Width="40px"
+                                                Height="40px"
+                                                />
                 </Button>
                 <Button x:Name="btnAddPlotter" Grid.Column="4" BorderBrush="{x:Null}" Click="btnAddPlotter_Click" Background="{x:Null}" Foreground="Black">
                     <iconPacks:PackIconPicolIcons 

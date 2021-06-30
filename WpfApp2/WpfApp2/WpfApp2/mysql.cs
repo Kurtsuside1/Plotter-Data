@@ -11,7 +11,7 @@ namespace PlotterDataGH
         {
             string connetionString;
         MySqlConnection cnn;
-        connetionString = @"server=10.0.0.125;user id=Test;password=Testing123!;database=plotter_data;";
+        connetionString = @"server=5.206.213.147;user id=Test;password=Testing123!;database=plotter_data;";
                     cnn = new MySqlConnection(connetionString);
         cnn.Open();
 
