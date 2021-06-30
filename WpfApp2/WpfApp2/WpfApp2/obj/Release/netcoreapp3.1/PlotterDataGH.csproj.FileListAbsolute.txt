@@ -286,3 +286,7 @@ C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\
 C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\UsercontrolsMainScreen\Controls.baml
 C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\UsercontrolsMainScreen\graphInfo.g.cs
 C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\UsercontrolsMainScreen\graphInfo.baml
+C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\bin\Release\netcoreapp3.1\PlotterDataGH.dll.manifest
+C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\bin\Release\netcoreapp3.1\PlotterDataGH.application
+C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\PlotterDataGH.dll.manifest
+C:\Users\RproBr\Desktop\Github\Plotter Data\WpfApp2\WpfApp2\WpfApp2\obj\Release\netcoreapp3.1\PlotterDataGH.application
