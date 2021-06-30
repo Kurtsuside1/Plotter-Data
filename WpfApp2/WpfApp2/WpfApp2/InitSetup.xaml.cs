@@ -220,7 +220,9 @@ namespace WpfApp2
 
             var response = await client.PostAsync("http://10.0.0.125/", content);
 
-            var responseString = await response.Content.ReadAsStringAsync();
+            var responseString = await response.Content.ReadAsStringAsync(
+                
+            );
 
             MessageBox.Show(responseString);
         }

@@ -23,7 +23,7 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Horizontal" Height="80px" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
-            <Image Source="Pictures/logo.png"></Image>
+            <Image Source="Pictures/logo.png" RenderOptions.BitmapScalingMode="HighQuality"></Image>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center">

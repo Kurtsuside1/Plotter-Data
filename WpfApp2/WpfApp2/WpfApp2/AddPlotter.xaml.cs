@@ -272,8 +272,9 @@ Assembly.GetExecutingAssembly().GetName().CodeBase);
 
                 //ParentForm.fillerGrid.RowDefinitions.Clear();
                 //ParentForm.fillerGrid.Children.Clear();
+                ParentForm.clearTabs();
                 ParentForm.LoadData();
-                //ParentForm.TaskCreater();
+                ParentForm.TaskCreater();
 
                 this.Close();
 

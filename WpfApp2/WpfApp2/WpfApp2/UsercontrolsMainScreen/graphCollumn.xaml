@@ -25,7 +25,7 @@
                             <Rectangle x:Name="PART_Track" />
                             <Grid x:Name="PART_Indicator" ClipToBounds="true" HorizontalAlignment="Left">
                                 <Rectangle x:Name="Indicator" Fill="{TemplateBinding Foreground}" RadiusX="20" RadiusY="20"/>
-                                <Rectangle x:Name="Animation" Fill="{TemplateBinding Foreground}" RenderTransformOrigin="0.5,0.5" RadiusX="20" RadiusY="20">
+                                <Rectangle x:Name="Animation" Fill="{TemplateBinding Foreground}" RenderTransformOrigin="1,1" RadiusX="20" RadiusY="20">
                                     <Rectangle.RenderTransform>
                                         <TransformGroup>
                                             <ScaleTransform/>
@@ -54,16 +54,16 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="30px"/>
-            <RowDefinition Height="30px"/>
+            <!--<RowDefinition Height="30px"/>
+            <RowDefinition Height="30px"/>-->
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100px"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="1" Content="InkName" x:Name="lblInkName" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label Grid.Row="2" Content="InkPerc" x:Name="lblInkPerc" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <!--<Label Grid.Row="1" Content="InkName" x:Name="lblInkName" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Grid.Row="2" Content="InkPerc" x:Name="lblInkPerc" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
 
         <DockPanel Grid.Row="0" Grid.Column="0">
             <ProgressBar Style="{DynamicResource ProgressBarStyle1}" Name="pgbPercentage" Orientation="Vertical" Margin="30,0,30,0" ></ProgressBar>

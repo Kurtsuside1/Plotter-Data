@@ -340,7 +340,7 @@ namespace WpfApp2
 
             var content = new FormUrlEncodedContent(values);
 
-            var response = await client.PostAsync("http://10.0.0.125/", content);
+            var response = await client.PostAsync("http://10.0.200.2/", content);
 
             var responseString = await response.Content.ReadAsStringAsync();
 
@@ -375,7 +375,7 @@ namespace WpfApp2
 
             var content = new FormUrlEncodedContent(values);
 
-            var response = await client.PostAsync("http://10.0.0.125/", content);
+            var response = await client.PostAsync("http://10.0.200.2", content);
 
             var responseString = await response.Content.ReadAsStringAsync();
         }

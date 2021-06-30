@@ -33,6 +33,7 @@ namespace PlotterDataGH.UsercontrolsMainScreen
         public string serialnm;
         public string plotterNaam;
         public int typeId;
+        public string meterstand;
         AutoResetEvent waiter = new AutoResetEvent(false);
 
         private static readonly HttpClient client = new HttpClient();
@@ -145,16 +146,89 @@ namespace PlotterDataGH.UsercontrolsMainScreen
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             AddPlotter addPlotter = new AddPlotter();
-            //addPlotter.ParentForm = ParentForm;
+            addPlotter.ParentForm = ParentForm;
             addPlotter.editForm(plotterId);
             addPlotter.editingMode = true;
             addPlotter.Show();
         }
 
+        #region Send Data
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-
+            //Send data to Goedhart Group
+            Await();
         }
+
+        async System.Threading.Tasks.Task Await()
+        {
+            var task = SendPlotterAsync();
+            int timeout = 1000;
+            if (await System.Threading.Tasks.Task.WhenAny(task, System.Threading.Tasks.Task.Delay(timeout)) == task)
+            {
+                // task completed within timeout
+            }
+            else
+            {
+                MessageBox.Show("Verbinding met de Goedhart Servers kon niet gemaakt worden");
+            }
+        }
+
+        async System.Threading.Tasks.Task SendPlotterAsync()
+        {
+            var values = new Dictionary<string, string>
+            {
+                { "postType", "Plotter" },
+                { "serial_number", serialnm },
+                { "model_id", typeId.ToString() },
+                { "meters_printed", meterstand },
+                { "naam", plotterNaam },
+                { "IP", plotterIp },
+                { "bedrijfs_Naam", Settings.Default.bedrijfsNaam }
+            };
+
+            var content = new FormUrlEncodedContent(values);
+
+            var response = await client.PostAsync("http://10.0.200.2/", content);
+
+            var responseString = await response.Content.ReadAsStringAsync();
+
+            DataTable dataTable = new DataTable();
+            SqliteConnection cnn;
+            SqliteCommand cmd = null;
+            cnn = new SqliteConnection("Data Source=plotterData.db;");
+            cnn.Open();
+
+            string query = string.Format("SELECT * FROM `cartridge_reading` where `parent_id` = {0}", plotterId);
+            cmd = new SqliteCommand(query, cnn);
+
+            SqliteDataReader reader = cmd.ExecuteReader();
+            dataTable.Load(reader);
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                SendCartridgeAsync(responseString, row["cartridge_model"].ToString(), row["volume"].ToString(), row["max_volume"].ToString());
+            }
+        }
+
+        async System.Threading.Tasks.Task SendCartridgeAsync(string parent_id, string cartridge_model, string volume, string max_volume = null)
+        {
+            var values = new Dictionary<string, string>
+            {
+                { "postType", "Cartridge" },
+                { "parent_id", parent_id },
+                { "cartridge_model", cartridge_model },
+                { "volume", volume },
+                { "max_volume", max_volume }
+            };
+
+            var content = new FormUrlEncodedContent(values);
+
+            var response = await client.PostAsync("http://10.0.200.2/", content);
+
+            var responseString = await response.Content.ReadAsStringAsync();
+        }
+
+        #endregion
 
         #region Scanning
 

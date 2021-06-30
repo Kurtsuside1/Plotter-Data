@@ -54,11 +54,14 @@ namespace PlotterDataGH.UsercontrolsMainScreen
             {
                 graphCollumn graphCollumns = new graphCollumn();
                 ColumnDefinition cd = new ColumnDefinition();
+                ColumnDefinition cd1 = new ColumnDefinition();
                 cd.Width = GridLength.Auto;
+                cd1.Width = GridLength.Auto;
                 graphGrid.ColumnDefinitions.Add(cd);
+                graphInfoGrid.ColumnDefinitions.Add(cd1);
 
-                graphCollumns.lblInkName.Content = row["cartridge_model"].ToString();
-                graphCollumns.lblInkPerc.Content = row["volume"].ToString();
+                //graphCollumns.lblInkName.Content = row["cartridge_model"].ToString();
+                //graphCollumns.lblInkPerc.Content = row["volume"].ToString();
 
                 string volume = row["volume"].ToString();
                 volume = volume.Replace("%", "").ToString();
@@ -67,9 +70,20 @@ namespace PlotterDataGH.UsercontrolsMainScreen
 
                 graphGrid.Children.Add(graphCollumns);
                 Grid.SetColumn(graphCollumns, graphGrid.ColumnDefinitions.Count - 1);
+                Grid.SetRow(graphCollumns, 4);
+
+                graphInfo graphInfo = new graphInfo();
+                graphInfo.lblInkName.Content = row["cartridge_model"].ToString();
+                graphInfo.lblInkPerc.Content = row["volume"].ToString();
+
+                graphInfoGrid.Children.Add(graphInfo);
+                Grid.SetColumn(graphInfo, graphInfoGrid.ColumnDefinitions.Count - 1);
+                Grid.SetRow(graphInfo, 6);
             }
             ColumnDefinition last = new ColumnDefinition();
+            ColumnDefinition last1 = new ColumnDefinition();
             graphGrid.ColumnDefinitions.Add(last);
+            graphInfoGrid.ColumnDefinitions.Add(last1);
 
             //for (int x = graphGrid.ColumnDefinitions.Count - 1; x > 0; x--)
             //{

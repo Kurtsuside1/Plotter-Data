@@ -72,6 +72,7 @@ namespace PlotterDataGH
                 tc.meterstand = string.Format(row["meters_printed"].ToString());
                 tc.typeId = Convert.ToInt32(row["model_id"]);
                 tc.latestScan = Convert.ToDateTime(row["datetime"]);
+                tc.serialnm = row["serial_number"].ToString();
                 //tc.loadData();
 
                 if(countTabs == 0)
@@ -152,7 +153,99 @@ namespace PlotterDataGH
         public void clearTabs()
         {
             tabControlGrid.Children.Clear();
+            tellertstandGrid.Children.Clear();
             countTabs = 0;
+        }
+
+        public void TaskCreater()
+        {
+            // Get the service on the local machine
+            using (TaskService ts = new TaskService())
+            {
+                if (ts.GetTask("Plotter Scanner") != null)
+                {
+                    ts.RootFolder.DeleteTask("Plotter Scanner");
+                }
+            }
+
+            foreach (tabControl row in tabControlGrid.Children)
+            {
+                // Get the service on the local machine
+                using (TaskService ts = new TaskService())
+                {
+
+                    var debugField = System.IO.Path.GetDirectoryName(
+    Assembly.GetExecutingAssembly().GetName().CodeBase);
+
+                    debugField = debugField.Substring(6);
+
+                    var filename = debugField + @"/ghWebscraper.exe";
+
+                    //Start the Converted python file and pass the paramater
+                    string arguments = string.Format(@"{0} {1} {2} {3}", row.typeId, row.plotterIp, Settings.Default.bedrijfsNaam, row.lblTabName.Content);
+
+                    TaskDefinition td = ts.NewTask();
+
+                    if (ts.GetTask("Plotter Scanner") != null)
+                    {
+                        td = ts.GetTask("Plotter Scanner").Definition;
+                    }
+
+                    // Create a new task definition and assign properties
+
+                    td.RegistrationInfo.Description = "Scans plotter";
+                    td.RegistrationInfo.Author = "Goedhart Groep";
+
+                    if (td.Triggers.Count == 0)
+                    {
+                        // Create a trigger that will fire the task at this time every day
+                        td.Triggers.Add(new DailyTrigger { DaysInterval = 1 });
+                    }
+
+                    // Create an action that will launch Notepad whenever the trigger fires
+                    td.Actions.Add(new ExecAction(filename, arguments, debugField));
+
+                    // Register the task in the root folder
+                    ts.RootFolder.RegisterTaskDefinition(@"Plotter Scanner", td);
+
+
+                }
+
+            }
+
+            using (TaskService ts = new TaskService())
+            {
+                var debugField = System.IO.Path.GetDirectoryName(
+    Assembly.GetExecutingAssembly().GetName().CodeBase);
+
+                debugField = debugField.Substring(6);
+
+                var filename = debugField + @"/NewWay.exe";
+
+                TaskDefinition td = ts.NewTask();
+
+                if (ts.GetTask("Plotter Scanner") != null)
+                {
+                    td = ts.GetTask("Plotter Scanner").Definition;
+                }
+
+                // Create a new task definition and assign properties
+
+                td.RegistrationInfo.Description = "Scans plotter";
+                td.RegistrationInfo.Author = "Goedhart Groep";
+
+                if (td.Triggers.Count == 0)
+                {
+                    // Create a trigger that will fire the task at this time every day
+                    td.Triggers.Add(new DailyTrigger { DaysInterval = 1 });
+                }
+
+                // Create an action that will launch Notepad whenever the trigger fires
+                td.Actions.Add(new ExecAction(filename, null, debugField));
+
+                // Register the task in the root folder
+                ts.RootFolder.RegisterTaskDefinition(@"Plotter Scanner", td);
+            }
         }
 
         #region Scanning

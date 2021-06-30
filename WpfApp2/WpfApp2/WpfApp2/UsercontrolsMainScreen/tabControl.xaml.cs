@@ -86,6 +86,8 @@ namespace PlotterDataGH
             controllers.ParentForm = ParentForm;
             controllers.tabForm = this;
             controllers.lblLatestScanDate.Content = latestScan.ToString();
+            controllers.meterstand = meterstand;
+            controllers.serialnm = serialnm;
 
             ParentForm.statusGrid.Children.Add(controllers);
             Grid.SetColumn(controllers, 0);
